@@ -15,12 +15,35 @@ class VervoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+public function insertarVervo(Request $request){
+// return $request;
+
+try {
+    Vervo::create([
+        'espayol'=>$request->espayol,
+        'ingles' => $request->ingles,
+        'imagen' => $request->imagen,
+        
+    ]);
+
+
+} catch (\Throwable $th) {
+    return back()->with('error','error');
+}
+    
+}
+
     public function index()
     {
-       
         $data = Vervo::all();
         return view('vervos/index', compact('data'));
+    }
 
+
+    public function mostrarVervo(){
+        $data = Vervo::all();
+        return view('vervos/mostrar', compact('data'));
     }
 
     /**

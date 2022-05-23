@@ -76,6 +76,10 @@
                         <a class="nav-link" href="#" onclick="direccionarVista('vervo')">  Vervos</a>
                     </ul>
 
+                    <ul>
+                        <a class="nav-link" href="#" onclick="direccionarVista('insertarVervo')">  Insertar</a>
+                    </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->

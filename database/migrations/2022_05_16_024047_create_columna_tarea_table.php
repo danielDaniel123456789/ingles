@@ -13,9 +13,7 @@ class CreateColumnaTareaTable extends Migration
      */
     public function up()
     {
-    
-
-        Schema::table('vervos', function (Blueprint $table) {
+     Schema::table('vervos', function (Blueprint $table) {
             $table->boolean('revisada');
    
         });

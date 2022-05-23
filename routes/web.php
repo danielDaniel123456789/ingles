@@ -17,12 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 use App\Http\Controllers\VervoController;
+Route::get('/insertarVervo', function () {  return view('vervos/insertarVervo');});
+
 Route::resource('vervo', VervoController::class);
+Route::get('mostrarVervo', [VervoController::class, 'mostrarVervo'])->name('mostrarVervo');
 Route::post('formExamen', [VervoController::class, 'formExamen'])->name('formExamen');
 Route::get('formExamen', [VervoController::class, 'formExamen'])->name('formExamen');
 Route::post('vervoRevisada', [VervoController::class, 'vervoRevisada'])->name('vervoRevisada');
+Route::post('insertarVervo', [VervoController::class, 'insertarVervo'])->name('insertarVervo');
+
