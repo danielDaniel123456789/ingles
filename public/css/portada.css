@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+body {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: white;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+span, p{
+  font-size:4em;
+  font-weight: 400;
+  letter-spacing: 8px;
+ 
+}
+
+
+
+.configuracion{
+
+  position: absolute;
+  padding-top: 40px;
+ padding-left: 20px ;
+ z-index: 5 !important;
+}
+
+
+.wave{
+  animation: wave  ease-in-out 0.1s infinite alternate;
+  /*
+    float: left;
+    margin: 5px;
+   
+    transform-origin: center -36px;
+    z-index: 5;
+    */
+  }
+
+  .wave:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+    font-size: 3ch;
+  }
+  .cambiarColor:hover {
+    color: #E91E63 !important;
+  }
+
+  img:hover{
+  filter: saturate(70%) !important;
+
+  
+  }
+
+  img{
+ 
+    z-index: 3;
+    border-radius: 50% !important;
+
+   /* -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  filter: hue-rotate(120deg);
+  */
+  
+  filter: hue-rotate(60deg) brightness(140%);
+  filter: saturate(30%);
+
+
+  }
+
+ 
+
+
+
+  @keyframes wave {
+    0% { transform: rotate(10deg); }
+    100% { transform: rotate(-10deg); }
+  }
+
+
+
+ 
+

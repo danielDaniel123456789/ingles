@@ -7,7 +7,8 @@ autenticacion-->composer require laravel/ui --dev
 -->php artisan ui vue --auth
 -->npm install -->npm run dev -->php artisan migrate
 ************************************************************************
-****FULL ALL --> php artisan make:model Vervo --all --api
+
+****FULL ALL --> php artisan make:model GuiaVervo --all --api
 ***PIVOTE ORDEN ALFABETICO (_) SINGULAR
 ***PIVOTE-->php artisan make:migration category_product_table --create=category_product
 --> php artisan db:seed
@@ -17,7 +18,7 @@ autenticacion-->composer require laravel/ui --dev
 --> -->php artisan passport:install
 
 // revertirá las últimas cinco migraciones:
-php artisan migrate:rollback --step=5
+php artisan migrate:rollback --step=1
 
 ************************************************************************
 extraer un unico valor desde controler laravel

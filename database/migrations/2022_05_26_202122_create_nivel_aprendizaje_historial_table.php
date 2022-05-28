@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVervosTable extends Migration
+class CreateNivelAprendizajeHistorialTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateVervosTable extends Migration
      */
     public function up()
     {
-        Schema::create('vervos', function (Blueprint $table) {
-            $table->id();
-            $table->string('espayol',100)->unique();
-            $table->string('ingles',100);
-            $table->text('imagen');
-           // $table->timestamps();
+        Schema::table('historial_vervos', function (Blueprint $table) {
+            $table->integer('nivelAprendizaje')->default(0);
+
         });
     }
 
@@ -29,6 +26,6 @@ class CreateVervosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vervos');
+        Schema::dropIfExists('historial_vervos');
     }
 }

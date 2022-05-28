@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVervosTable extends Migration
+class CreateGuiaVervosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateVervosTable extends Migration
      */
     public function up()
     {
-        Schema::create('vervos', function (Blueprint $table) {
-            $table->id();
-            $table->string('espayol',100)->unique();
-            $table->string('ingles',100);
-            $table->text('imagen');
-           // $table->timestamps();
+        Schema::create('guia_vervos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('id_ultimaPalabra');
+        
         });
     }
 
@@ -29,6 +28,6 @@ class CreateVervosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vervos');
+        Schema::dropIfExists('guia_vervos');
     }
 }

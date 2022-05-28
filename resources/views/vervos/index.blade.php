@@ -1,8 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.appInforme')
 
 @section('content')
 <div class="container">
     
+  @php
+      $contador=0;
+  @endphp
     @if(session("exito"))
     <x-exito mensaje="exito" />
 @endif
@@ -16,13 +19,14 @@
                 <th >Imagen</th>
                 <th >Ver</th>
                 <th >Revisada</th>
+                <th>Demo</th>
               </tr>   
             @foreach ($data as $item)
-            <tr>
+            <tr >
                 <td>{{ $item->espayol}} </td>
                  <td>{{$item->ingles}}</td>
                  <td> <span onclick="imagen('{{ $item->imagen}}')"><i class="fa fa-search text-primary" ></i></span></td>
-                 <td><span onclick="informe('{{ $item->id}}','{{ $item->espayol}}','{{ $item->ingles}}','{{ $item->imagen}}')">
+                 <td><span onclick="informe('{{ $item->id}}','{{ $item->espayol}}','{{ $item->ingles}}','{{ $item->imagen}}','{{ $item->ancho}}')">
                     <i class="fa fa-pencil-square-o  text-primary" ></i></span> </td>
 
                     
@@ -30,21 +34,20 @@
                 
 
                 @if ( $item->revisada==0)
-                   <span onclick="revisar('{{ $item->id}}','{{ $item->espayol}}','{{ $item->ingles}}','{{ $item->imagen}}')"> No  <i class="fa fa-bell" aria-hidden="true"></i></span>
+                   <span onclick="revisar('{{ $item->id}}','{{ $item->espayol}}','{{ $item->ingles}}','{{ $item->imagen}}')"> No  <i class="fa fa-bell text-primary" aria-hidden="true"></i></span>
                 @else
-             <span ><i class="fa fa-check-circle text-danger" aria-hidden="true"></i></span>
+             <span ><i class="fa fa-check-circle text-danger " aria-hidden="true"></i></span>
                 @endif
-                     
-                    
-                    </td>
+         </td>
+                    <td> <a href="#" onclick="direccionarVista('demoVervo?id={{ $item->id}}')">DEMO</a></td>
               </tr>
             @endforeach
 
-          
+
            
           </tr>
         </table>
-        
+  
     </div>
 
 
@@ -54,7 +57,7 @@
 
 
 <script>
-
+document.getElementById("myTable").deleteRow(0);
 
         function imagen(txt){
             Swal.fire({
@@ -118,7 +121,7 @@
         $('#imagen').val(imagen);
     }
 
- function informe(id, espayol, ingles, imagen){
+ function informe(id, espayol, ingles, imagen, ancho){
            Swal.fire({
           title: 'MODIFICAR',
           html:
@@ -140,8 +143,14 @@
 
                     <div class="input-group mb-3">
                     <span class="input-group-text">Imagen: </span>
-                    <input type="text" class="form-control" id="imagen" name="imagen" required>
+                    <input type="text" class="form-control" id="imagen" name="imagen" >
                     </div>
+
+                    <div class="input-group mb-3">
+                    <span class="input-group-text">Ancho: </span>
+                    <input type="number" min="5" class="form-control" id="ancho" name="ancho" required>
+                    </div>
+
                  </div>      
                 </div>
                 <button type="submit" class="btn btn-primary">GUARDAR</button> 
@@ -155,6 +164,7 @@
         $('#espayol').val(espayol);
         $('#ingles').val(ingles);
         $('#imagen').val(imagen);
+        $('#ancho').val(ancho);
     }
 </script>
 

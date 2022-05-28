@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVervosTable extends Migration
+class CreateAnchoImagenVervoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateVervosTable extends Migration
      */
     public function up()
     {
-        Schema::create('vervos', function (Blueprint $table) {
-            $table->id();
-            $table->string('espayol',100)->unique();
-            $table->string('ingles',100);
-            $table->text('imagen');
-           // $table->timestamps();
+        Schema::table('vervos', function (Blueprint $table) {
+            $table->integer('ancho')->default('50');
         });
     }
 

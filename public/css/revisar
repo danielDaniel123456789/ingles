@@ -1,0 +1,158 @@
+<style>
+
+.color{  color:#641E16;}
+.configuracion{
+
+    position: absolute;
+    padding-top: 40px;
+   padding-left: 20px ;
+   z-index: 5 !important;
+  }
+
+ img{
+ display: block;
+ margin: 0px auto;
+ opacity: 0.3;
+ width: 50% !important;
+  border-radius: 50%;
+ -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+       filter: grayscale(100%); 
+
+
+    }
+
+    .advertecia{
+  
+  opacity: 0.08;
+  font-size:2.5em;
+
+  letter-spacing: 3px;
+  text-transform:uppercase;
+  animation:efectoAdvertecncia .75s ease-out infinite;
+  text-shadow:0px 0px 5px black,
+      0px 0px 7px black;
+}
+
+@keyframes efectoAdvertecncia{
+  from{
+      text-shadow:0px 0px 10px #fff,
+      0px 0px 10px #fff, 
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 50px #fff,
+      0px 0px 50px #fff,
+      0px 0px 50px #7B96B8,
+      0px 0px 150px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px -10px 100px #7B96B8,
+      0px -10px 100px #7B96B8;}
+}
+
+  
+</style>
+
+<style>
+
+  .efectoSobra:hover {
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    
+  }
+  
+  h5{
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+  }
+    .element {
+    animation:
+      pulse 2s ease infinite alternate,
+      nudge 2s linear infinite alternate;
+  
+  }
+  
+  
+  </style>
+  
+  <style>
+  
+  
+  ::-webkit-scrollbar {
+  display: none;
+  }
+  
+    .palabraImagenIngles{
+      color: blue;
+    }
+    .palabraImagenEspayol{
+      color: red;
+    }
+  
+    .scrollable-element {
+    scrollbar-color: red yellow; /* red is for the thumb and yellow is for the track */
+  }
+    .wave {
+      float: left;
+      margin: 20px;
+      animation: wave  ease-in-out 0.5s infinite alternate;
+      transform-origin: center -36px;
+     
+    }
+  
+    .wave:hover {
+      animation-play-state: paused;
+      cursor: pointer;
+    }
+  
+    .wave img {
+      border: 5px solid #f8f8f8;
+      display: block;
+      
+      
+    }
+  
+   
+    .wave:after{
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid #ffffff;
+      top: -10px;
+      left: 50%;
+      border-bottom: none;
+      border-right: none;
+      transform: rotate(35deg);
+    }
+  
+    .wave:before{
+      content: '';
+      position: absolute;
+      top: -23px;
+      left: 50%;
+      display: block;
+      height: 44px;
+      width: 47px;
+      background-image: url(https://cdn.hashnode.com/res/hashnode/image/upload/v1602040503586/FW6g79WBY.png);
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+      z-index: 16;
+    }
+  
+    @keyframes wave {
+      0% { transform: rotate(10deg); }
+      100% { transform: rotate(-10deg); }
+    }
+  
+  
+  
+   
+    </style>
+
