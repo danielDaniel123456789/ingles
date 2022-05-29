@@ -1,5 +1,6 @@
-@extends('layouts.appHistorial')
+@extends('layouts.appVista')
 @section('content')
+<canvas id="canv"></canvas>
 @foreach ($data as $item )
 @php
               $espayol=  $item->espayol;
@@ -8,17 +9,26 @@
               $imagen=  $item->imagen;
               $nivelAprendizaje=$item->nivelAprendizaje;
                 @endphp
-             {{$item->espayol}}    {{$item->nivelAprendizaje}}
+
 @endforeach
 
-   <form  method="post" action="{{ route('bajarNivelVervo') }}"  >
+
+@if(session("exito"))
+<x-exito/>
+@endif
+
+@if(session("error"))
+<x-error/>
+@endif
+
+   <form id="bajarNivel" style="display: none" method="post" action="{{ route('bajarNivelVervo') }}"  >
       @csrf
       <input type="text" name="id" value="{{$id}}">
       <input type="text" name="nivel" value="{{$nivelAprendizaje}}">
       <button type="submit" >bajar</button>
     </form>
 
-    <form  method="post" action="{{ route('subirNivelVervo') }}"  >
+    <form id="subirNivel" style="display: none" method="post" action="{{ route('subirNivelVervo') }}"  >
         @csrf
         <input type="text" name="id" value="{{$id}}">
         <input type="text" name="nivel" value="{{$nivelAprendizaje}}">
@@ -34,7 +44,7 @@
             <h2 class="text-primary">EVALUACIÓN </h2>
             <div class="p-4">
                 <h6 class="text-primary">TRADUCE: {{$espayol}}</h6>
-                <input id="palabraIngles" type="text" class="form-control" placeholder="Significado">
+                <input id="palabraIngles02" type="text" class="form-control" placeholder="Significado">
             </div>
 
             <div >
@@ -53,20 +63,32 @@
 <script>
 
     function revisar(){
-    respuestaIngles= $('#palabraIngles').val();
-    espayol= '{{$espayol}}';
+        
+    //respuestaIngles= $('#palabraIngles02').val();
+    respuestaIngles=  document.getElementById('palabraIngles02').value;
+    //convertir a miscula
+    respuestaIngles= respuestaIngles.toLowerCase();
+    espayol= '{{$espayol}}';  
     ingles= '{{$ingles}}';
- 
-    if(palabraIngles.length>1){
-        if(respuestaIngles.equals(ingles)){
-                alert('si');
+
+
+    //convertir a miscula
+    ingles=ingles.toLowerCase();
+
+    if(respuestaIngles.length>1){
+        if(respuestaIngles.localeCompare(ingles)){
+            //falso
+            document.getElementById('bajarNivel').submit();
         }
         else
         {
-            alert('no');
+            //Correcto
+            document.getElementById('subirNivel').submit();
         }
+        }
+    
         
-    }
+    
 
     }
 </script>

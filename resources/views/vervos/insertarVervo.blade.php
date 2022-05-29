@@ -34,7 +34,7 @@
 
              <div class="mb-3">
                <label class="form-label">Ancho </label>
-               <input type="number" min="5" class="form-control" name="ancho" placeholder="Ancho"  required>
+               <input type="number" min="5" class="form-control" name="ancho" placeholder="Ancho"  value="125" required>
             </div>
 
 

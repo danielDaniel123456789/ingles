@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/voz', function () {    return view('voz');});
+Route::get('voz', function () {    return view('voz/index');});
 Route::get('/', function () {    return view('welcome');});
 Route::get('plantilla2', function () {    return view('plantilla2');});
 Route::get('plantilla3', function () {    return view('plantilla3');});
@@ -29,6 +29,9 @@ Route::get('mostrarVervo', [VervoController::class, 'mostrarVervo'])->name('most
 Route::get('listaVervosTerminada', function () {    return view('listaVervosTerminada');});
 Route::post('formExamen', [VervoController::class, 'formExamen'])->name('formExamen');
 Route::get('formExamen', [VervoController::class, 'formExamen'])->name('formExamen');
+Route::get('evaluacion', [VervoController::class, 'evaluacion'])->name('evaluacion');
+
+
 Route::get('informe', [VervoController::class, 'informe'])->name('informe');
 Route::get('historial', [VervoController::class, 'historial'])->name('historial');
 Route::post('vervoRevisada', [VervoController::class, 'vervoRevisada'])->name('vervoRevisada');
@@ -36,6 +39,11 @@ Route::post('insertarVervo', [VervoController::class, 'insertarVervo'])->name('i
 Route::post('reiniciarVervosDesde0', [VervoController::class, 'reiniciarVervosDesde0'])->name('reiniciarVervosDesde0');
 Route::post('bajarNivelVervo', [VervoController::class, 'bajarNivelVervo'])->name('bajarNivelVervo');
 Route::post('subirNivelVervo', [VervoController::class, 'subirNivelVervo'])->name('subirNivelVervo');
+
+Route::post('evaluacionBajarNivelVervo', [VervoController::class, 'evaluacionBajarNivelVervo'])->name('evaluacionBajarNivelVervo');
+Route::post('evaluacionSubirNivelVervo', [VervoController::class, 'evaluacionSubirNivelVervo'])->name('evaluacionSubirNivelVervo');
+
+
 Route::get('demoVervo', [VervoController::class, 'demoVervo'])->name('demoVervo');
 
 

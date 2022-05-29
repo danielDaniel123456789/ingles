@@ -1,42 +1,31 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>
-          To detect network speed using JavaScript
-        </title>
-    </head>
-    <body>
-        <script type="text/javascript">
-            var userImageLink = 
-"https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200714180638/CIP_Launch-banner.png";
-            var time_start, end_time;
-            
-            // The size in bytes
-            var downloadSize = 5616998;
-            var downloadImgSrc = new Image();
-  
-            downloadImgSrc.onload = function () {
-                end_time = new Date().getTime();
-                displaySpeed();
-            };
-            time_start = new Date().getTime();
-            downloadImgSrc.src = userImageLink;
-            document.write("time start: " + time_start);
-            document.write("<br>");
-  
-            function displaySpeed() {
-                var timeDuration = (end_time - time_start) / 1000;
-                var loadedBits = downloadSize * 8;
-                
-                /* Converts a number into string
-                   using toFixed(2) rounding to 2 */
-                var bps = (loadedBits / timeDuration).toFixed(2);
-                var speedInKbps = (bps / 1024).toFixed(2);
-                var speedInMbps = (speedInKbps / 1024).toFixed(2);
-                alert("Your internet connection speed is: \n" 
-                      + bps + " bps\n" + speedInKbps 
-                      + " kbps\n" + speedInMbps + " Mbps\n");
-            }
-        </script>
-    </body>
-</html>
+<p id="text">It was a dark and stormy night.</p>
+
+<div id="rate-control">
+  <label for="rate">Rate:</label>
+  <input type="range" min="0.5" max="2" value="1" step="0.1" id="rate">
+</div>
+
+<button id="play">Play</button>
+
+<script>
+    const synth = window.speechSynthesis;
+
+const text = document.querySelector('#text');
+const play = document.querySelector('#play');
+const rate = document.querySelector('#rate');
+
+
+function speak() {
+  if (synth.speaking) {
+    synth.cancel();
+  }
+  const utterThis = new SpeechSynthesisUtterance(text.textContent);
+  utterThis.addEventListener('error', () => {
+    console.error('SpeechSynthesisUtterance error');
+  });
+  utterThis.rate = 0.6;
+  synth.speak(utterThis);
+}
+
+play.addEventListener('click', speak);
+</script>

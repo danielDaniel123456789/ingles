@@ -29,7 +29,8 @@
       <script src="{{ asset('js/pronunciarTexto.js') }}" defer></script>
       <script src="{{ asset('js/rutas.js') }}" defer></script>
       <script src="{{ asset('js/canvas.js') }}" defer></script>
-
+      
+      <script src="{{ asset('js/portada.js') }}" defer></script>
   
       <!-- Fonts -->
       <link rel="dns-prefetch" href="//fonts.gstatic.com">

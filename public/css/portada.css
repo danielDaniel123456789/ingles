@@ -42,6 +42,8 @@ span, p{
     animation-play-state: paused;
     cursor: pointer;
     font-size: 3ch;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
   }
   .cambiarColor:hover {
     color: #E91E63 !important;
@@ -62,6 +64,7 @@ span, p{
   filter: grayscale(1);
   filter: hue-rotate(120deg);
   */
+
   
   filter: hue-rotate(60deg) brightness(140%);
   filter: saturate(30%);

@@ -3,15 +3,16 @@
 
 @section('content')
 
-
+<!--
 @if(session("exito"))
 <x-exito/>
 @endif
 
+
 @if(session("error"))
 <x-error/>
 @endif
-  
+-->
 <canvas id="canv"></canvas>
 @php
     
@@ -51,7 +52,7 @@ else {
 
 
 
-<div class="container p-5 ">
+<div class=" container p-5 ">
  
 
   <div class="d-flex justify-content-center ">
@@ -97,6 +98,19 @@ else {
 
     <ul class="nav justify-content-center">
     
+
+    <li class="nav-item">
+      <a class="nav-link text-secondary" href="#">Palabras aprendidas: {{$cantidad}}</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:direccionarVista('voz')">Voz</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:direccionarVista('evaluacion')">Evaluación</a>
+    </li>
+
       <li class="nav-item">
         <a class="nav-link" href="javascript:direccionarVista('historial')">Historial</a>
       </li>

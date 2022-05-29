@@ -12,6 +12,8 @@
      <script src="{{ asset('js/rutas.js') }}" defer></script>
      <script src="{{ asset('js/pronunciarTexto.js') }}" defer></script>
 
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 
    <!-- animate-->
    <link     rel="stylesheet"     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"   />
@@ -26,6 +28,9 @@
 
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- OCULTAR DIV-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div id="app">

@@ -14,6 +14,31 @@ use Redirect;
 class VervoController extends Controller
 {
     
+public function evaluacion(){
+    if( $this->idUser()>0){
+
+    
+        $data = DB::table('vervos')
+             ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_historial')
+             ->where('historial_vervos.id_user','=',$this->idUser())
+             ->orderBy('nivelAprendizaje','asc')
+             ->select('vervos.*','historial_vervos.nivelAprendizaje')
+             ->limit(1)
+             ->get();
+//return count($data);
+             if(count($data)<=0){
+            
+                 return redirect('mostrarVervo');
+             }
+//return $data;
+
+     return view('vervos/examen/evaluacion', compact('data'));
+   }
+   else{
+     return redirect('login');
+   }
+
+}
 
 public function subirNivelVervo(Request $request){
     $subirNivel= $request->nivel+1;
@@ -24,9 +49,43 @@ public function subirNivelVervo(Request $request){
       //  return $subirNivel;
     }
     
+ public function   evaluacionBajarNivelVervo(Request $request){
+    //return $request;
+    $bajarNivel= $request->nivel-1;
+    if($bajarNivel<0){
+      Historial_vervo::where('id_historial',$request->id)
+            ->where('id_user',$this->idUser())
+             ->delete();
+    }
+    else{
+        Historial_vervo::where('id_historial', $request->id)
+        ->where('id_user', $this->idUser())
+                   ->update(['nivelAprendizaje' => $bajarNivel]);
+    }
+  
+               return redirect('evaluacion');
+ }
+
+ public function evaluacionSubirNivelVervo(Request $request){
+     //return $request;
+    $subirNivel= $request->nivel+1;
+    if($subirNivel <0){
+      Historial_vervo::where('id_historial',$request->id)
+            ->where('id_user',$this->idUser())
+             ->delete();
+    }
+    else{
+        Historial_vervo::where('id_historial', $request->id)
+        ->where('id_user', $this->idUser())
+                   ->update(['nivelAprendizaje' => $subirNivel]);
+    }
+  
+               return redirect('evaluacion');
+ }
+
 public function bajarNivelVervo(Request $request){
     $bajarNivel= $request->nivel-1;
-    if($bajarNivel==0){
+    if($bajarNivel <0){
       Historial_vervo::where('id_historial',$request->id)
             ->where('id_user',$this->idUser())
              ->delete();
@@ -136,11 +195,12 @@ try {
 }
  return $id_buscar;
 }
-
+/*
 public function mostrarExamen(){
 
     if( $this->idUser()>0){
 
+    
            $data = DB::table('vervos')
                 ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_historial')
                 ->where('historial_vervos.id_user','=',$this->idUser())
@@ -162,7 +222,7 @@ public function mostrarExamen(){
       }
  
 }
-
+*/
 public function demoVervo(Request $request){
    // return $request->id;
     $data = DB::table('vervos')
@@ -175,20 +235,25 @@ public function demoVervo(Request $request){
 }
 public function mostrarVervo(){  
  
-  $numero= rand(1,7);
+
+
+  $cantidad=count(DB::table('historial_vervos')
+  ->where('historial_vervos.id_user','=',$this->idUser())
+  ->get());
+
+
+
   
       if( $this->idUser()>0){
 
-        if($numero==7){
-            return $this->mostrarExamen();
-        }
+      
 
         if($this->historialVacio()==true){
              $data = DB::table('vervos')->limit(1)
             ->orderBy('id', 'asc')
              ->get();
              //return view('plantilla1', compact('data'));
-             return view('vervos/mostrarVervo', compact('data'));
+             return view('vervos/mostrarVervo', compact('data','cantidad'));
          }
  
        if($this->existePrioridades()==true) {
@@ -196,12 +261,15 @@ public function mostrarVervo(){
        }
 
        if( $this->existeEseID()==true){
+
+     
+
         $data = DB::table('vervos')
         ->where('vervos.id','=',$this->idHistorial())
        ->get();
       // return view('plantilla1', compact('data'));
 
-        return view('vervos/mostrarVervo', compact('data'));
+        return view('vervos/mostrarVervo', compact('data','cantidad'));
        }
        else
 
@@ -231,14 +299,16 @@ public function existeEseID(){
 
  public function mostrarPrioridades(){
 
+    $cantidad=count(DB::table('historial_vervos')
+    ->where('historial_vervos.id_user','=',$this->idUser())
+    ->get());
 
        $data = DB::table('vervos')
                     ->join('prioridads', 'vervos.id', '=', 'prioridads.id_vervo')
                     ->select('vervos.*', 'prioridads.id as prioridad')
                  ->get();
-                 return view('vervos/mostrarVervo', compact('data'));   
+                 return view('vervos/mostrarVervo', compact('data', 'cantidad'));   
  }
-
 
     public function existePrioridades(){
         
