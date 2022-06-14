@@ -32,7 +32,7 @@ class AprendidaController extends Controller
     public function quitarPrioridad($id_prioridad){
         $data=Prioridad::where('id',$id_prioridad)
                     ->where('id_user',$this->idUser())->delete();
-          return redirect('mostrarVervo');
+          return redirect('vista');
     }
 
     public function noHaSidoRegistrada($id_vervo){
@@ -74,7 +74,7 @@ class AprendidaController extends Controller
                 //    return $request;
                 $this->insertar_al_Historial($request->id_vervo);
                 $this->actualizarGuia($request->id_vervo);
-                return redirect('mostrarVervo')->with('exito', 'exito');
+                return redirect('vista')->with('exito', 'exito');
             }
 
         if($this->existePrioridad()>0){
@@ -90,7 +90,7 @@ class AprendidaController extends Controller
             $this->insertar_al_Historial($request->id_vervo);
             $this->actualizarGuia($request->id_vervo);
         }
-       return redirect('mostrarVervo')->with('exito', 'exito');
+       return redirect('vista')->with('exito', 'exito');
     }
 
     }
@@ -132,7 +132,7 @@ public function existePrioridad(){
                    'id_vervo' => $request->id_vervo
                  ]);
         
-          return redirect('informe')->with('exito', 'exito');
+          return redirect('historial')->with('exito', 'exito');
        //    return $data[0]->id;
 
 

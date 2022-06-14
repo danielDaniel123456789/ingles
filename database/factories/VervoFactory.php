@@ -14,7 +14,11 @@ class VervoFactory extends Factory
     public function definition()
     {
         return [
-            //
-        ];
+            'espayol' => $this->faker->word(),
+            'ingles' => $this->faker->word(),
+            'imagen' =>'https://images.emojiterra.com/google/android-10/512px/1f3e0.png',
+            'ancho' =>200,
+     ];
+
     }
 }

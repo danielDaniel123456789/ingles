@@ -67,6 +67,11 @@
                 </a>
        
              
+                <ul>
+                    <a class="nav-link" href="#" onclick="direccionarVista('imagenFondo')"> Fondo</a>
+                </ul>
+
+
                    <ul>
                        <a class="nav-link" href="#" onclick="direccionarVista('vervo')">  Vervos</a>
                    </ul>
@@ -79,14 +84,43 @@
                        <a class="nav-link" href="#" onclick="direccionarVista('insertarVervo')">  Insertar</a>
                    </ul>
 
+                   <ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-link"  >
+                            <a id="navbarDropdown"  href="#" role="button" >
+                                {{ Auth::user()->name }}
+                            </a>
 
-                    <ul>
-                     <a class="nav-link" href="#" onclick="direccionarVista('historial')">  Historial</a>
-                    </ul>
-       </div>
+                        </li>
+                        <li class="nav-link" >
+                            <a  href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             Cerrar Sesion
+                         </a>
+
+
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                             @csrf
+                         </form>
+
+                        </li>
+                    @endguest
+                </ul>
+         
             </div>
         </nav>
         <main class="py-4">

@@ -6,13 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="{{ asset('js/portada.js') }}" defer></script>
   <script src="{{ asset('js/rutas.js') }}" defer></script>
+  <script src="{{ asset('js/table.js') }}" defer></script>
+
   
   <link href="{{ asset('css/portada.css') }}" rel="stylesheet">
   <link href="{{ asset('css/vista.css') }}" rel="stylesheet">
-     <script src="{{ asset('js/rutas.js') }}" defer></script>
-     <script src="{{ asset('js/pronunciarTexto.js') }}" defer></script>
+  <link href="{{ asset('css/canva.css') }}" rel="stylesheet">
+  <script src="{{ asset('js/rutas.js') }}" defer></script>
+  <script src="{{ asset('js/pronunciarTexto.js') }}" defer></script>
+  <script type="text/javascript" src="{{ asset('js/deletrearPalabra.js') }}" defer></script>
+     
 
      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   
 
    <!-- animate-->
@@ -31,6 +37,8 @@
 
 <!-- OCULTAR DIV-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 </head>
 <body>
     <div id="app">

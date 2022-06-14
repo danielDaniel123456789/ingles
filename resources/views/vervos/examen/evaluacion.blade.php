@@ -57,8 +57,7 @@
 </style>
 
 
-
-   <form id="bajarNivel" style="display: none" method="post" action="{{ route('evaluacionBajarNivelVervo') }}"  >
+ <form id="bajarNivel" style="display: none" method="post" action="{{ route('evaluacionBajarNivelVervo') }}"  >
       @csrf
       <input type="text" name="id" value="{{$id}}">
       <input type="text" name="nivel" value="{{$nivelAprendizaje}}">
@@ -73,11 +72,11 @@
         <button type="submit">subir</button>
       </form>
 
-<div class="salir" >
-    <a class="nav-link" href="javascript:direccionarVista('mostrarVervo')" > <i class="fa fa-arrow-left" aria-hidden="true"></i>  SALIR</a>
+
+    <a class="salir" href="javascript:direccionarVista('vista')" > <i class="fa-2x fa fa-arrow-left" aria-hidden="true"></i>  </a>
                  
 
-</div>
+
 <div class="container p-4" id="card01">
     <div class="d-flex justify-content-center">
         <div class="card text-center bg-dark animate__animated {{$animacion}}" >
@@ -145,6 +144,9 @@
         </div>
     </div>
 </div>
+<div class="d-flex justify-content-center">
+  <img class="imagenesPortadaFondo" src="{{$imagenFondo}}" alt="">
+</div>
 
 <script>
 
@@ -157,7 +159,7 @@ input.addEventListener("keypress", function(event) {
 });
 
 function olvide(){
-    pronunciarIngles('{{$ingles}}');
+  pronunciarIngles('{{$ingles}}','{{$velocidad}}');
     pronunciarEspayol('{{$espayol}}');
 
 
@@ -187,7 +189,7 @@ function olvide(){
     if(respuestaIngles.length>1){
         if(respuestaIngles.localeCompare(ingles)){
             //falso
-            pronunciarIngles('{{$ingles}}');
+            pronunciarIngles('{{$ingles}}','{{$velocidad}}');
     pronunciarEspayol('{{$espayol}}');
             document.getElementById("card01").innerHTML = "";
     document.getElementById("cardError").style.display = "block";
@@ -198,7 +200,7 @@ function olvide(){
         else
         {
             //Correcto
-            pronunciarIngles('{{$ingles}}');
+            pronunciarIngles('{{$ingles}}','{{$velocidad}}');
                 pronunciarEspayol('{{$espayol}}');
                 document.getElementById("card01").innerHTML = "";
             document.getElementById("mensajeExito").style.display = "block";

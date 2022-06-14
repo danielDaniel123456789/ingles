@@ -48,6 +48,11 @@
  
 
 </div>
+<div class="container footer d-flex">
+    <a class="text-secondary" href="https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna"> Desinstalar plus </a>
+     
+</div>
+
 <script>
     function repasarVervos(){
       

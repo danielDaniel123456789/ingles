@@ -17,10 +17,12 @@
 
 </div>
 
-<div class="container p-4 ">
+<div class="container p-4 text-center">
+    <h3 class="text-center text-primary">Configurar la velocidad de voz</h3>
     <div class="d-flex justify-content-center p-4 text-center">
+    
         <div class="card p-4">
-            <h5>Velocidad del lector de voz</h5>
+            <h4 class="text-primary">Actualizar</h4>
             <h6 id="text">It was a dark and stormy night.</h6>
     
             <div id="rate-control">

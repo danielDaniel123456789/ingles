@@ -5,19 +5,36 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVervoRequest;
 use App\Http\Requests\UpdateVervoRequest;
 use App\Models\Vervo;
+use App\Models\ImagenFondo;
 use App\Models\Historial_vervo;
 use App\Models\Prioridad;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Nette\Utils\Random;
+use PhpParser\Node\Stmt\Return_;
+use PhpParser\Node\Stmt\TryCatch;
 use Redirect;
 class VervoController extends Controller
 {
-    
+
+
+public function obtenerImagenFondo(){
+    $imagenFondo = ImagenFondo::all();
+
+    $imagenFondo = DB::table('imagen_fondos')
+                 ->inRandomOrder()->limit(1)
+                 ->get();
+   $image=  $imagenFondo[0]->imagen;
+
+   return $image;
+}    
 public function evaluacion(){
     if( $this->idUser()>0){
-
+       
     
+
+
+        $velocidad=$this->velocidad();
         $data = DB::table('vervos')
              ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_historial')
              ->where('historial_vervos.id_user','=',$this->idUser())
@@ -28,11 +45,11 @@ public function evaluacion(){
 //return count($data);
              if(count($data)<=0){
             
-                 return redirect('mostrarVervo');
+                 return redirect('vista');
              }
 //return $data;
-
-     return view('vervos/examen/evaluacion', compact('data'));
+    $imagenFondo= $this->obtenerImagenFondo();
+     return view('vervos/examen/evaluacion', compact('data','imagenFondo','velocidad'));
    }
    else{
      return redirect('login');
@@ -45,7 +62,7 @@ public function subirNivelVervo(Request $request){
     Historial_vervo::where('id_historial', $request->id)
     ->where('id_user', $this->idUser())
                ->update(['nivelAprendizaje' => $subirNivel]);
-               return redirect('mostrarVervo');
+               return redirect('vista');
       //  return $subirNivel;
     }
     
@@ -96,7 +113,7 @@ public function bajarNivelVervo(Request $request){
                    ->update(['nivelAprendizaje' => $bajarNivel]);
     }
   
-               return redirect('mostrarVervo');
+               return redirect('vista');
     //return $request;
 }
 
@@ -112,7 +129,7 @@ public function bajarNivelVervo(Request $request){
                          //throw $th;
                      }
       
-          return redirect('mostrarVervo')->with('exito', 'exito');
+          return redirect('vista')->with('exito', 'exito');
 
     }
 public function insertarVervo(Request $request){
@@ -164,12 +181,13 @@ public function informe(){
 
 public function historial(){
 
+    $imagenFondo= $this->obtenerImagenFondo();
     $data = DB::table('vervos')
                       ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_vervo')
                       ->where('historial_vervos.id_user','=',$this->idUser())
                       ->select('vervos.*')
                       ->get();
-    return view('vervos/historial', compact('data')); 
+    return view('vervos/historial', compact('data','imagenFondo')); 
   
   }
 
@@ -211,7 +229,7 @@ public function mostrarExamen(){
 //return count($data);
                 if(count($data)<=0){
                
-                    return redirect('mostrarVervo');
+                    return redirect('vista');
                 }
 //return $data;
 
@@ -225,17 +243,36 @@ public function mostrarExamen(){
 */
 public function demoVervo(Request $request){
    // return $request->id;
+   $velocidad=$this->velocidad();
+
+   $cantidad=count(DB::table('historial_vervos')
+   ->where('historial_vervos.id_user','=',$this->idUser())
+   ->get());
+ 
     $data = DB::table('vervos')
     ->where('vervos.id','=',$request->id)
    ->get();
   // return $data;
   // return view('plantilla1', compact('data'));
 
-    return view('vervos/demoVervo', compact('data'));
+    return view('vervos/demoVervo', compact('data','velocidad','cantidad'));
 }
-public function mostrarVervo(){  
- 
 
+public function velocidad(){
+    try {
+        $velocidad=DB::table('vozs')
+        ->where('vozs.user_id','=',$this->idUser())
+        ->get();
+        $velocidad= $velocidad[0]->velocidad;
+    } catch (\Throwable $th) {
+        $velocidad=1;
+    }
+    return $velocidad;
+}
+public function vista(){  
+ 
+  
+   $velocidad=$this->velocidad();
 
   $cantidad=count(DB::table('historial_vervos')
   ->where('historial_vervos.id_user','=',$this->idUser())
@@ -243,17 +280,19 @@ public function mostrarVervo(){
 
 
 
+
   
       if( $this->idUser()>0){
-
-      
-
+        
+        
         if($this->historialVacio()==true){
              $data = DB::table('vervos')->limit(1)
             ->orderBy('id', 'asc')
              ->get();
              //return view('plantilla1', compact('data'));
-             return view('vervos/mostrarVervo', compact('data','cantidad'));
+             $imagenFondo= $this->obtenerImagenFondo();
+
+             return view('vervos/vista', compact('data','cantidad','imagenFondo','velocidad'));
          }
  
        if($this->existePrioridades()==true) {
@@ -262,14 +301,12 @@ public function mostrarVervo(){
 
        if( $this->existeEseID()==true){
 
-     
-
-        $data = DB::table('vervos')
+       $data = DB::table('vervos')
         ->where('vervos.id','=',$this->idHistorial())
        ->get();
       // return view('plantilla1', compact('data'));
-
-        return view('vervos/mostrarVervo', compact('data','cantidad'));
+      $imagenFondo= $this->obtenerImagenFondo();
+        return view('vervos/vista', compact('data','cantidad','imagenFondo','velocidad'));
        }
        else
 
@@ -298,7 +335,7 @@ public function existeEseID(){
     
 
  public function mostrarPrioridades(){
-
+    $velocidad=$this->velocidad();
     $cantidad=count(DB::table('historial_vervos')
     ->where('historial_vervos.id_user','=',$this->idUser())
     ->get());
@@ -307,7 +344,8 @@ public function existeEseID(){
                     ->join('prioridads', 'vervos.id', '=', 'prioridads.id_vervo')
                     ->select('vervos.*', 'prioridads.id as prioridad')
                  ->get();
-                 return view('vervos/mostrarVervo', compact('data', 'cantidad'));   
+                 $imagenFondo= $this->obtenerImagenFondo();
+                 return view('vervos/vista', compact('data', 'cantidad','imagenFondo','velocidad'));   
  }
 
     public function existePrioridades(){

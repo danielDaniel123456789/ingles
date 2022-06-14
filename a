@@ -7,7 +7,7 @@ autenticacion-->composer require laravel/ui --dev
 -->php artisan ui vue --auth
 -->npm install -->npm run dev -->php artisan migrate
 ************************************************************************
-****FULL ALL --> php artisan make:model Categoria --all --api
+****FULL ALL --> php artisan make:model ImagenFondo --all --api
 ***PIVOTE ORDEN ALFABETICO (_) SINGULAR
 ***PIVOTE-->php artisan make:migration category_product_table --create=category_product
 --> php artisan db:seed

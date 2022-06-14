@@ -14,18 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('voz', function () {    return view('voz/index');});
 Route::get('/', function () {    return view('welcome');});
+Route::get('ejemplo1', function () {    return view('ejemplo1');});
 Route::get('plantilla2', function () {    return view('plantilla2');});
 Route::get('plantilla3', function () {    return view('plantilla3');});
-Route::get('/propiedades', function () {    return view('propiedades/propiedades');});
+Route::get('/configuracion', function () {    return view('configuracion/configuracion');});
 Route::get('/sobre', function () {    return view('sobre/index');});
 Auth::routes();
 
+Route::get('extencion', function () {    return view('cliente/extencion');});
+Route::get('predeterminado', function () {    return view('cliente/predeterminado');});
+Route::get('instalar', function () {    return view('cliente/instalar');});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 use App\Http\Controllers\VervoController;
 Route::get('/insertarVervo', function () {  return view('vervos/insertarVervo');});
 
 Route::resource('vervo', VervoController::class);
-Route::get('mostrarVervo', [VervoController::class, 'mostrarVervo'])->name('mostrarVervo');
+Route::get('vista', [VervoController::class, 'vista'])->name('vista');
 Route::get('listaVervosTerminada', function () {    return view('listaVervosTerminada');});
 Route::post('formExamen', [VervoController::class, 'formExamen'])->name('formExamen');
 Route::get('formExamen', [VervoController::class, 'formExamen'])->name('formExamen');
@@ -49,11 +54,12 @@ Route::get('demoVervo', [VervoController::class, 'demoVervo'])->name('demoVervo'
 
 
 
-
 use App\Http\Controllers\AprendidaController;
 Route::post('formAprendida', [AprendidaController::class, 'formAprendida'])->name('formAprendida');
 
 Route::post('repasarPalabra', [AprendidaController::class, 'repasarPalabra'])->name('repasarPalabra');
+
+//administrador
 
 use App\Http\Controllers\CategoriaController;
 Route::get('categorias', [CategoriaController::class, 'categorias'])->name('categorias');
@@ -62,3 +68,15 @@ Route::get('categorias', [CategoriaController::class, 'categorias'])->name('cate
 Route::post('nuevaCategoria', [CategoriaController::class, 'nuevaCategoria'])->name('nuevaCategoria');
 Route::post('modificarCategoria', [CategoriaController::class, 'modificarCategoria'])->name('modificarCategoria');
 
+
+use App\Http\Controllers\ImagenFondoController;
+Route::get('imagenFondo', [ImagenFondoController::class, 'imagenFondo'])->name('imagenFondo');
+Route::post('eliminarImagenFondo', [ImagenFondoController::class, 'eliminarImagenFondo'])->name('eliminarImagenFondo');
+Route::post('insertarImagenFondo', [ImagenFondoController::class, 'insertarImagenFondo'])->name('insertarImagenFondo');
+
+
+use App\Http\Controllers\VozController;
+Route::post('actualizarVoz', [VozController::class, 'actualizarVoz'])->name('actualizarVoz');
+Route::get('configurarVoz', [VozController::class, 'configurarVoz'])->name('configurarVoz');
+Route::get('configuracion', [VozController::class, 'configuracion'])->name('configuracion');
+//Route::get('/configuracion', function () {    return view('configuracion/configuracion');});

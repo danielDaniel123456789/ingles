@@ -15,13 +15,22 @@ class Controller extends BaseController
     
 
 
-   
+    public function eresAdministrador() {
+      $admin = Auth::admin();
+      return $admin;
+ }
   
    public function idUser() {
         $id = Auth::id();
         return $id;
    }
   
+   public function admin() {
+
+    $data = Auth::user()->admin;
+    return $data;
+}
+
   public function nombreUser() {
         $user = Auth::user()->name;
         return $user;

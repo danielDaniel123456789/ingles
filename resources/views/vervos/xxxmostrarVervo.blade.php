@@ -4,7 +4,12 @@
 
 <div class="cuerpo">
 
+
   <div class="configuracion">
+    <i class="fa fa-cogs" aria-hidden="true"></i>
+    ss
+  </div>
+  <div class="">
     <h1> <a href="javascript:direccionarVista('informe')"><i class="fa fa-cogs color" aria-hidden="true"></i></a> </h1>
     
     <a href="javascript:direccionarVista('historial')">Historial</a> <br>

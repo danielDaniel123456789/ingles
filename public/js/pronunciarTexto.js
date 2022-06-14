@@ -9,12 +9,12 @@ function pronunciarEspayol(txt){
     
     }
 
-    function pronunciarIngles(txt){
+    function pronunciarIngles(txt,velocidad){
 
         let utterance = new SpeechSynthesisUtterance(txt)
         utterance.lang = 'en-US'
         //velocidad del reproductor
-        utterance.rate = 0.5;
+        utterance.rate = velocidad;
   
      
         speechSynthesis.speak(utterance);
