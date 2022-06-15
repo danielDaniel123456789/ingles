@@ -38,18 +38,39 @@
 <!-- OCULTAR DIV-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 </head>
+<style>
+    body{
+    color: black;
+    background-color: black;
+  }
+  .imagenesPortadaFondo{
+    opacity: 0.2 !important;
+  }
+  .imagenesPortadaFondo{
+      position: absolute;
+      bottom: 0px;
+    z-index: -9 !important;
+    opacity: 0.07 !important;
+  }
+  
+</style>
 <body>
     <div id="app">
 
-        <ul class="nav" id="nav_inicio">
+        <ul class="nav p-4" id="nav_inicio">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" onclick="direccionarVista('instalar')">INDICACIONES</a>
+              <a class="nav-link text-white" aria-current="page" href="#" onclick="direccionarVista('instalar')">
+                <i class="fa fa-reply" aria-hidden="true"></i>
+
+                REGRESAR</a>
             </li>
       
          
           </ul>
+          
 
 
         @yield('content')

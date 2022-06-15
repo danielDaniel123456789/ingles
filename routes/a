@@ -1,0 +1,8 @@
+use App\Http\Controllers\NombreController;
+Route::resource('posts', NombreController::class);
+
+use App\Http\Controllers\VervosController;
+Route::post('formExamen', [VervosController::class, 'formExamen'])->name('formExamen');
+Route::get('formExamen', [VervosController::class, 'formExamen'])->name('formExamen');
+
+Route::prefix('admin')->group(function () { });

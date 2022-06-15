@@ -11,7 +11,7 @@ class ImagenFondoController extends Controller
 {
 
 public function eliminarImagenFondo(Request $request){
-
+    $this->eresAdmistrador();
                 $flight = ImagenFondo::find($request->id_imagen);
                 $flight->delete();
  
@@ -19,7 +19,7 @@ public function eliminarImagenFondo(Request $request){
 }
 
 public function insertarImagenFondo(Request $request){
-
+    $this->eresAdmistrador();
    
        ImagenFondo::create([
                     'imagen'=>$request->imagen
@@ -28,7 +28,7 @@ public function insertarImagenFondo(Request $request){
 }
 
  public function imagenFondo(){
-
+    $this->eresAdmistrador();
      $data = ImagenFondo::all();
 
         return view('imagenFondo/index', compact('data'));

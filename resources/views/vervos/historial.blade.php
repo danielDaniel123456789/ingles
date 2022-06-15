@@ -44,7 +44,7 @@
    
 
 <div class="m-4 footer d-flex">
-  <a class="text-secondary" href="https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna"> Desinstalar plus </a>
+  <a class="text-secondary" href="https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna"> 😕DESINSTALAR PLUS </a>
    
 </div>
     

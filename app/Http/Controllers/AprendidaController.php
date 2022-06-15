@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Historial_vervo;
 use App\Models\Prioridad;
 use App\Models\GuiaVervo;
+use App\Models\User;
+use App\Models\Vervo;
 use Illuminate\Support\Facades\DB;
 use Redirect;
 class AprendidaController extends Controller
@@ -67,7 +69,8 @@ class AprendidaController extends Controller
 
  
     public function formAprendida(Request $request){
-     
+
+
     if( $this->idUser()>0){
     
                 if($this->historialVacio()==1){

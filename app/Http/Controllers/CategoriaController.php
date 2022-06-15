@@ -13,7 +13,7 @@ class CategoriaController extends Controller
     
 
     public function modificarCategoria(Request $request){
-         
+        $this->eresAdmistrador();
         try {
             Categoria::where('id', $request->id)
                  ->update(['name' => $request->name]);
@@ -30,6 +30,7 @@ class CategoriaController extends Controller
     }
 
     public function categorias(){
+        $this->eresAdmistrador();
        $data = Categoria::all();
     //   return $data;
         return view('categoria/index', compact('data'));

@@ -3,12 +3,10 @@
 
 @section('content')
 <style>
-      .imagenesPortadaFondo{
-      position: absolute;
-      bottom: 0px;
-    z-index: -7 !important;
-    opacity: 0.2 !important;
+  .colorAviso{
+    color: #FFCA28;
   }
+ 
 
   .plus{
       position: absolute !important;
@@ -18,16 +16,7 @@
     .empezar{
        z-index: 18 !important;
     }
-     .titulo1{
-        letter-spacing: 2pt;      /* para separar entgre letras */
-  word-spacing: 5pt;        /* para separacion entre palabras */  
-  line-height: 20pt;        /* para la separacion entre lineas */ 
-  text-indent: 10pt; 
-  font-weight: 300;
-  font-size: 40px !important;
-  
-  color: #17A589;
-    }
+   
     .titulo2{
         position: relative;
         letter-spacing: 2pt;      /* para separar entgre letras */
@@ -36,44 +25,16 @@
   text-indent: 10pt; 
   font-weight: 200;
   font-size: 18px !important;
-color: blue;
+color: #FFCA28;
   z-index: 5;
   
     }
 
-    .subTitulo{
-        letter-spacing: 2pt;      /* para separar entgre letras */
-  word-spacing: 5pt;        /* para separacion entre palabras */  
-  line-height: 20pt;        /* para la separacion entre lineas */ 
-  text-indent: 10pt; 
-  font-weight: 300;
-  font-size: 34px !important;
-  opacity: 0.5 !important;
-    }
 
-  
-  .imagenFooter{
-    z-index: -7 !important;
-    opacity: 0.1 !important;   
-  }
-  .carousel-control-prev-icon{
-    background-color: blue;
 
-    border-radius: 50%;
-  }
-  .carousel-control-next-icon{
-    background-color: blue;
 
-    border-radius: 50%;
-  }
 
-  .imgEfectos{
-     border-radius: 25px;
-    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-     box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-  }
-
+ 
 
 </style>
    
@@ -109,10 +70,10 @@ color: blue;
 
   <div class="d-flex justify-content-center text-dark">
     <div>
-      <h6 class="text-primary"> El link que copiaste lo pegaras </h6>
+      <h6 class="colorAviso"> El link que copiaste lo pegaras </h6>
     
-      <h6 class="text-primary">sobre el campo <strong class="text-danger">Redirect URL</strong>   </h6>
-      <h6 class="text-primary">y presionas el botón  <span class="text-danger"><strong> Save</strong> </span>  </h6>
+      <h6 class="colorAviso">sobre el campo <strong class="text-danger">Redirect URL</strong>   </h6>
+      <h6 class="colorAviso">y presionas el botón  <span class="text-danger"><strong> Save</strong> </span>  </h6>
 
   
       <h6 class="text-secondary">**Despues de presionar Save, Cierra todas la pestañas**</h6>
@@ -125,7 +86,7 @@ color: blue;
   </div>
 
 
-  <a class="btn btn-primary" href="https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna"> Entendido</a>
+  <a class="btn btn-warning" href="https://chrome.google.com/webstore/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna"> Entendido</a>
    
 </div>
     
@@ -149,12 +110,10 @@ color: blue;
 <div class="footer p-4">
   <h1 class=" titulo2  plus"  id="confugurar1" >PLUS INGLES  </h1>
   <div class="d-flex justify-content-center animate__animated animate__bounceIn">
-    <img class="imagenesPortadaFondo animate__animated animate__bounceIn" src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
+    <img class="imagenesPortadaFondo  " src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
   
 </div>
 </div>
-
-<canvas id="canv" class="canva"></canvas>
 
 
 <script>

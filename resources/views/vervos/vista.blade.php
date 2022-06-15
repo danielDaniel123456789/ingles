@@ -59,6 +59,9 @@ else {
     <a   onclick="direccionarVista('configuracion')">  <i style="color:{{$color}};  " class="configuracionHover fa fa-cogs fa-2x" aria-hidden="true"></i> </a>
   <br>  <br>
     <a  href="javascript:direccionarVista('historial')"><i style="color:{{$color}};" class="configuracionHover fa fa-book fa-2x" aria-hidden="true"></i></a>
+  <br><br>
+  <a href="javascript:direccionarVista('compartir')"><i style="color:{{$color}};" class="fa fa-share-alt fa-2x configuracionHover" aria-hidden="true"></i></a>
+  
   </div>
 
   <div onclick="aprendidaEvento()"  class="aprendidaPosicion"  >
@@ -67,6 +70,8 @@ else {
     </div> 
   
   </div>
+
+  
   
   <div class=" container p-5 ">
 

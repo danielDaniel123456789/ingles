@@ -1,5 +1,5 @@
 
-@extends('layouts.appVista')
+@extends('layouts.appInstalar')
 
 @section('content')
 <style>
@@ -15,6 +15,17 @@
     .empezar{
        z-index: 18 !important;
     }
+    .mostrarNav{
+      position: absolute;
+      top:10px;
+      right: 20px;
+    }
+    .tituloNav{
+  font-weight: 900;
+  font-size: 18px;
+   color: #17A589;
+    }
+
      .titulo1{
         letter-spacing: 2pt;      /* para separar entgre letras */
   word-spacing: 5pt;        /* para separacion entre palabras */  
@@ -47,25 +58,29 @@
   opacity: 0.5 !important;
     }
 
-    .imagenesPortadaFondo{
-    z-index: -7 !important;
-    opacity: 0.5 !important;
-  }
+ 
   .imagenFooter{
     z-index: -7 !important;
     opacity: 0.1 !important;   
   }
 </style>
+<div class="d-flex justify-content-center animate__animated animate__bounceIn">
+    <h1 class=" titulo2  plus"  id="confugurar1" >PLUS INGLES  </h1>
+</div>
+
+
+
+
+<x-nav-instalar />
+
     <div class="container p-5 text-center">
         <div class="p-4">
             <h1 class="titulo1 animate__animated animate__bounceIn" >PLUS INGLES </h1>
         </div>
         
-        <div class="d-flex justify-content-center animate__animated animate__bounceIn">
-             <h1 class=" titulo2  plus"  id="confugurar1" >PLUS INGLES  </h1>
-        </div>
+        
         <div class="d-flex justify-content-center">   
-            <img class="imagenesPortadaFondo animate__animated animate__bounceIn" src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
+            <img class="imagenesPortadaFondo " src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
         </div>
 
         <div class="d-flex justify-content-center animate__animated animate__bounceIn">
@@ -77,8 +92,7 @@
     <div class="footer">
         <h5>Este plus te muestra vocabulario inglés,</h5>
     <h5> junto con evaluaciones.</h5>
-    <img width="150px" class="imagenFooter" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtj4UTOXW6n_OMoldxSeeX4d7p1D9ovqZVWscgyaMqZH9IIHst2UI8cxtPJokx5qr9Zx4&usqp=CAU" alt="">
-    </div>
+   </div>
 <canvas id="canv" class="canva"></canvas>
 
 

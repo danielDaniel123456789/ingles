@@ -36,10 +36,7 @@ $id=0;
       @csrf
    
       <h4 class="text-primary deletrearPalabra "  id="confugurar1" >CONFIGURAR VELOCIDAD </h4>
-      <h5 class="text-dark" id="confugurar2">DEL LECTOR DE VOZ</h5>
-     
-
-    
+      <h5 class="text-dark" id="confugurar2"> LECTOR DE VOZ</h5>
       <input type="hidden" id="id" name="id_voz">
       <div id="rate-control p-4">
         <h6 id="text">It was a dark and stormy night.</h6>

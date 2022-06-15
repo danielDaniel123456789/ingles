@@ -17,6 +17,10 @@ use Redirect;
 class VervoController extends Controller
 {
 
+    public function insertarNuevoVervo(){
+        $this->eresAdmistrador();
+        return view('vervos/insertarVervo');
+    }
 
 public function obtenerImagenFondo(){
     $imagenFondo = ImagenFondo::all();
@@ -24,17 +28,23 @@ public function obtenerImagenFondo(){
     $imagenFondo = DB::table('imagen_fondos')
                  ->inRandomOrder()->limit(1)
                  ->get();
-   $image=  $imagenFondo[0]->imagen;
+      //  $cantidad= count($imagenFondo);
+        if(count($imagenFondo)==0){
+            return 0;
+        }
+                 
+        else
+        {
+            $image=  $imagenFondo[0]->imagen;
 
-   return $image;
+            return $image;
+        }
+   
 }    
 public function evaluacion(){
     if( $this->idUser()>0){
        
-    
-
-
-        $velocidad=$this->velocidad();
+     $velocidad=$this->velocidad();
         $data = DB::table('vervos')
              ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_historial')
              ->where('historial_vervos.id_user','=',$this->idUser())
@@ -134,7 +144,7 @@ public function bajarNivelVervo(Request $request){
     }
 public function insertarVervo(Request $request){
  //return $request;
-
+ $this->eresAdmistrador();
 try {
     Vervo::create([
         'espayol'=>strtolower($request->espayol),
@@ -156,6 +166,7 @@ try {
     public function index()
     {
       //  return 'ss';
+      $this->eresAdmistrador();
         $data = Vervo::all();
 
    $data = DB::table('vervos')
@@ -168,7 +179,7 @@ try {
 
 
 public function informe(){
-
+    $this->eresAdmistrador();
   $data = DB::table('vervos')
                     ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_vervo')
                     ->where('historial_vervos.id_user','=',$this->idUser())
@@ -213,36 +224,10 @@ try {
 }
  return $id_buscar;
 }
-/*
-public function mostrarExamen(){
 
-    if( $this->idUser()>0){
-
-    
-           $data = DB::table('vervos')
-                ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_historial')
-                ->where('historial_vervos.id_user','=',$this->idUser())
-                ->orderBy('nivelAprendizaje','asc')
-                ->select('vervos.*','historial_vervos.nivelAprendizaje')
-                ->limit(1)
-                ->get();
-//return count($data);
-                if(count($data)<=0){
-               
-                    return redirect('vista');
-                }
-//return $data;
-
-        return view('vervos/examen/index', compact('data'));
-      }
-      else{
-        return redirect('login');
-      }
- 
-}
-*/
 public function demoVervo(Request $request){
    // return $request->id;
+   $this->eresAdmistrador();
    $velocidad=$this->velocidad();
 
    $cantidad=count(DB::table('historial_vervos')
@@ -271,30 +256,33 @@ public function velocidad(){
 }
 public function vista(){  
  
-  
+
+   // $this->authorize('author',1);
    $velocidad=$this->velocidad();
 
   $cantidad=count(DB::table('historial_vervos')
   ->where('historial_vervos.id_user','=',$this->idUser())
   ->get());
-
+ 
 
 
 
   
       if( $this->idUser()>0){
         
-        
+    
         if($this->historialVacio()==true){
              $data = DB::table('vervos')->limit(1)
             ->orderBy('id', 'asc')
              ->get();
+
+           
              //return view('plantilla1', compact('data'));
              $imagenFondo= $this->obtenerImagenFondo();
-
+           //  return $imagenFondo;
              return view('vervos/vista', compact('data','cantidad','imagenFondo','velocidad'));
          }
- 
+         
        if($this->existePrioridades()==true) {
              return $this->mostrarPrioridades();
        }
@@ -360,8 +348,7 @@ public function existeEseID(){
 
     public function store(Request $request)
     {
- 
-        //return $request;
+        $this->eresAdmistrador();
         Vervo::where('id', $request->id)
                 ->update([
                     'espayol' => $request->espayol,
@@ -373,20 +360,11 @@ public function existeEseID(){
              return redirect('vervo')->with('exito', 'exito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Vervo  $vervo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vervo $vervo)
-    {
-        //
-    }
+  
 
     public function vervoRevisada(Request $request)
     {
- 
+        $this->eresAdmistrador();
         Vervo::where('id', $request->id)
                 ->update(['revisada' => 1]);
             
@@ -396,21 +374,5 @@ public function existeEseID(){
 
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateVervoRequest  $request
-     * @param  \App\Models\Vervo  $vervo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Vervo $vervo)
-    {
-        //
-    }
-
-  
-    public function destroy(Vervo $vervo)
-    {
-        //
-    }
+ 
 }

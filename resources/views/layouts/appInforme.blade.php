@@ -68,20 +68,20 @@
        
              
                 <ul>
-                    <a class="nav-link" href="#" onclick="direccionarVista('imagenFondo')"> Fondo</a>
+                    <a class="nav-link" href="#" onclick="direccionarVista('admin/imagenFondo')"> Fondo</a>
                 </ul>
 
 
                    <ul>
-                       <a class="nav-link" href="#" onclick="direccionarVista('vervo')">  Vervos</a>
+                       <a class="nav-link" href="#" onclick="direccionarVista('admin/vervo')">  Vervos</a>
                    </ul>
 
                    <ul>
-                       <a class="nav-link" href="#" onclick="direccionarVista('categorias')">  Categorias</a>
+                       <a class="nav-link" href="#" onclick="direccionarVista('admin/categorias')">  Categorias</a>
                    </ul>
 
                    <ul>
-                       <a class="nav-link" href="#" onclick="direccionarVista('insertarVervo')">  Insertar</a>
+                       <a class="nav-link" href="#" onclick="direccionarVista('admin/insertarNuevoVervo')">  Insertar</a>
                    </ul>
 
                    <ul class="navbar-nav ms-auto">
