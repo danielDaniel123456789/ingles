@@ -32,14 +32,13 @@ class AprendidaController extends Controller
 
     }
     public function quitarPrioridad($id_prioridad){
-        $data=Prioridad::where('id',$id_prioridad)
-                    ->where('id_user',$this->idUser())->delete();
-          return redirect('vista');
+        $data=Prioridad::where('id',$id_prioridad)->delete();
+          return redirect('curso');
     }
 
-    public function noHaSidoRegistrada($id_vervo){
+    public function noHaSidoRegistrada($id_vervo, $idUser){
         $data = DB::table('historial_vervos')            
-                        ->where('historial_vervos.id_user','=',$this->idUser())
+                        ->where('historial_vervos.id_user','=',$idUser)
                         ->where('historial_vervos.id_vervo','=',$id_vervo)
                          ->get();
         $cantidad =count($data);
@@ -47,69 +46,70 @@ class AprendidaController extends Controller
         else   return 0;
     }
 
-    public function insertar_al_Historial($id_vervo){
-        Historial_vervo::create([
-            'id_user'=>$this->idUser(),
-            'id_vervo' => $id_vervo,
-            'id_historial' => $id_vervo,
-            'nivelAprendizaje'=>1
-        ]);
+    public function insertar_al_Historial($id_vervo,$idUser){
+        if($this->estaPalabraEstaAgregadaAlHistorial($id_vervo,$idUser)==0){
+            Historial_vervo::create([
+                'id_user'=>$idUser,
+                'id_vervo' => $id_vervo,
+                'id_historial' => $id_vervo,
+                'nivelAprendizaje'=>1
+            ]);
+        }
+      
     }
-    public function actualizarGuia($id_vervo){
+    public function actualizarGuia($id_vervo,$idUser){
         $aumentaID=$id_vervo+1;
         GuiaVervo::updateOrCreate(
-            [ 'user_id'=> $this->idUser() ],
+            [ 'user_id'=> $idUser ],
             [ 'id_ultimaPalabra'=> $id_vervo,
             'id_proximaPalabra'=> $aumentaID, 
-        ],
+        ]
       );
     }
-
-    
 
  
     public function formAprendida(Request $request){
 
+        //return $request;
 
-    if( $this->idUser()>0){
-    
-                if($this->historialVacio()==1){
-                //    return $request;
-                $this->insertar_al_Historial($request->id_vervo);
-                $this->actualizarGuia($request->id_vervo);
-                return redirect('vista')->with('exito', 'exito');
-            }
+      if(!isset($_COOKIE["cursoIngles"])){   return redirect('login'); }
+  
+        $user = User::where('email', $_COOKIE["cursoIngles"])->get();
+        $idUser=$user[0]->id;
 
-        if($this->existePrioridad()>0){
-           //return $request;
-          $this->insertar_al_Historial($request->id_vervo);
-        //  $this->actualizarGuia($request->id_vervo);
-           return $this->quitarPrioridad($request->id_prioridad);
-   
+        if( $request->soyPrioridad =='falso'){
+            if($this->estaPalabraEstaAgregadaAlHistorial($request->id_vervo,$idUser)==0){
+                // return $request;
+             $this->insertar_al_Historial($request->id_vervo,$idUser);
+             $this->actualizarGuia($request->id_vervo,$idUser);
+             return redirect('curso')->with('exito', 'exito');
+              }
+
         }
+        else{
 
-    else  {
-        if ($this->noHaSidoRegistrada($request->id_vervo)==0) {
-            $this->insertar_al_Historial($request->id_vervo);
-            $this->actualizarGuia($request->id_vervo);
+           // return $request->soyPrioridad;
+            $this->insertar_al_Historial($request->id_vervo,$idUser);
+            return $this->quitarPrioridad($request->soyPrioridad);
+        
+
         }
-       return redirect('vista')->with('exito', 'exito');
+     return redirect('curso')->with('exito', 'exito');
     }
 
-    }
-    else{
-        return 'no';
-    }
-    
-    }
+  
+    public function estaPalabraEstaEntreLasPrioridades($id_vervo, $idUser){
+        $cantidad =count($data = DB::table('prioridads')
+                    ->where('prioridads.id_user','=',$idUser)
+                    ->where('prioridads.id_vervo','=',$id_vervo)
+                    ->get());
+   if($cantidad>0){
+       return 1;
+   }
+   else return 0;
+        
 
-    public function historialVacio() {
-        $data = Historial_vervo::all();
-        if(count($data)==0){
-                 return 1;
-        }
-        else     return 0;
-    }
+}
 
 public function existePrioridad(){
          $cantidad =count($data = DB::table('prioridads')
@@ -124,7 +124,8 @@ public function existePrioridad(){
 }
 
     public function repasarPalabra(Request $request){
-     //   return $request;
+   
+   // return $this->idUser(); 
     $data = DB::table('historial_vervos')
                         ->where('historial_vervos.id_user','=',$this->idUser())
                         ->where('historial_vervos.id_vervo','=',$request->id_vervo)

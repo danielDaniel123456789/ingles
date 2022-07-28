@@ -13,6 +13,7 @@
   <link href="{{ asset('css/vista.css') }}" rel="stylesheet">
   <link href="{{ asset('css/canva.css') }}" rel="stylesheet">
   <script src="{{ asset('js/rutas.js') }}" defer></script>
+  <script src="{{ asset('js/textoMoverCursor.js') }}" defer></script>
   <script src="{{ asset('js/pronunciarTexto.js') }}" defer></script>
   <script type="text/javascript" src="{{ asset('js/deletrearPalabra.js') }}" defer></script>
      
@@ -43,9 +44,15 @@
   <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
 </head>
 
-<body>
+<style>
+  canvas{
+    z-index: -9 !important;
+  }
+</style>
+
+<body onload="move();">
     <div id="app">
-    
+      <canvas id="canv"></canvas>
         <main class="py-4">
             @yield('content')
         </main>
