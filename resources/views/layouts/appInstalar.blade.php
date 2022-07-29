@@ -63,7 +63,7 @@
 
         <ul class="nav p-4" id="nav_inicio">
             <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#" onclick="direccionarVista('')">
+              <a class="nav-link text-white" aria-current="page" href="#" onclick="direccionarVista('instalar')">
                 <i class="fa fa-reply" aria-hidden="true"></i>
 
                 REGRESAR</a>

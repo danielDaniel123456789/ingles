@@ -2,6 +2,7 @@
 @extends('layouts.appInstalar')
 
 @section('content')
+
 <style>
 
   .paso{
@@ -188,16 +189,7 @@ color: #FFCA28;
 
 
 
-<div class="footer p-4">
 
-   
-  <div class="d-flex justify-content-center animate__animated animate__bounceIn">
-    
-    <img class="imagenesPortadaFondo" src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
-   
-    
-</div>
-</div>
 
 
 
