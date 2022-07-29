@@ -58,17 +58,16 @@ color: white;
     z-index: -7 !important;
     opacity: 0.1 !important;
   }
-  .imagenFooter{
-    z-index: -7 !important;
-    opacity: 0.1 !important;   
-  }
+
   .carousel-control-prev-icon{
-    background-color: black;
+    background-color: blue;
 
     border-radius: 50%;
+    
+    
   }
   .carousel-control-next-icon{
-    background-color:black;;
+    background-color:blue;;
 
     border-radius: 50%;
   }
@@ -84,7 +83,7 @@ box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15
   line-height: 20pt;        /* para la separacion entre lineas */ 
   text-indent: 10pt; 
   font-weight: 200;
-  font-size: 18px !important;
+  font-size: 28px !important;
 color: #FFCA28;
   z-index: 5;
   
@@ -93,9 +92,12 @@ color: #FFCA28;
 </style>
     
 
-<div class="container p-2">
+<div class="container p-2 text-center">
+<h3 class="text-white" >INSTALAR  EXTENSION CHROME</h3>
+
   <div class="d-flex justify-content-center animate__animated animate__bounceIn">
-    <h4 class=" titulo2  plus"  id="confugurar1" >PLUS INGLES   </h4>
+    <h2 class=" titulo2  plus"  id="confugurar1" >PLUS INGLES   </h2>
+   
   </div>
 </div>
 
@@ -103,7 +105,7 @@ color: #FFCA28;
   
     <div class="container p-4">
       <div class="d-flex justify-content-center animate__animated animate__bounceIn">
-        <h4 class=" text-white  plus"  id="confugurar1" >INDICACIONES   </h4>
+    
     
       </div>
 
@@ -120,7 +122,7 @@ color: #FFCA28;
 
        
          <div class="carousel-item active">
-           <h5 class="text-white paso">PASO 1</h5>
+          
            <div class="container p-4">
              <img class="imgEfectos" src="./img/a.png" width="60%" alt="...">
            </div>
@@ -128,7 +130,7 @@ color: #FFCA28;
        
          </div>
          <div class="carousel-item">
-           <h5  class="text-white paso">PASO 2</h5>
+      
            <div class="container p-4">
              <img class="imgEfectos" src="./img/imagen2.png" width="70%"  alt="...">
            </div>
@@ -136,7 +138,7 @@ color: #FFCA28;
           
          </div>
          <div class="carousel-item">
-           <h5  class="text-white paso">PASO 3</h5>
+         
            <div class="container p-4">
              <img class="imgEfectos" src="./img/c.png" width="50%" alt="...">
            </div>
@@ -145,25 +147,23 @@ color: #FFCA28;
          </div>
      
          <div class="carousel-item p-4">
-          <h5  class="text-white paso">LISTO</h5>
-          <a class="text-warning" href="  https://www.google.com/search?sxsrf=ALiCzsYOScxHkSf_x7gDzrm4gua-EKzKmw:1655310243881&q=install+Google+Chrome&sa=X&ved=2ahUKEwilldGY76_4AhUrTjABHXTvAG8Q7xYoAHoECAIQMA&biw=1279&bih=951&dpr=1       
-          " 
-          target="_blank">
-         Debes instalar el navegador Google Chrome
-          </a>
+  
+        
 
           <div class="p-4">
-            <h6 class="text-secondary">Solo dos pasos y terminamos.</h6>
-      
+           
 
-            <p>Check out <a class="text-warning" href="https://www.google.com/search?q=Configure+Google+Chrome+como+el+navegador+predeterminado&sxsrf=ALiCzsZ_ZnL_fMF1CAyojRRwKDkMt59-Dw%3A1655309861402&source=hp&ei=JQaqYvjqFrmFwbkP_emckAM&iflsig=AJiK0e8AAAAAYqoUNbCOpQls0gitk2NqkxSmnp6XR55-&ved=0ahUKEwi4kZ_i7a_4AhW5QjABHf00BzIQ4dUDCAc&uact=5&oq=Configure+Google+Chrome+como+el+navegador+predeterminado&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECcyBggAEB4QFjIGCAAQHhAWOgcIIxDqAhAnOg0ILhDHARCjAhDqAhAnUL8CWL8CYJQJaAFwAHgAgAHjAYgB4wGSAQMyLTGYAQCgAQKgAQGwAQo&sclient=gws-wiz" 
-              target="_blank">    <i class="fa fa-location-arrow" aria-hidden="true"></i> 1- Configure Google Chrome como el navegador predeterminado</a>.</p>
-        
+     
           <div class="">
-          <a  class="text-warning" href="#" onclick="direccionarVista('extencion')" class="text-white">
+            <h3>
+            <a  class="text-warning" href="#" onclick="direccionarVista('extencion')" class="text-white">
             <i class="fa fa-location-arrow" aria-hidden="true"></i>
-             2- Instalar Extencion</a>
+              Instalar Extencion</a>
+            </h3>
+     
           </div>
+
+    
       
        </div>
      
@@ -193,7 +193,18 @@ color: #FFCA28;
 
 
 
+  <div class="footer">
+          <a class="text-warning" href="  https://www.google.com/search?sxsrf=ALiCzsYOScxHkSf_x7gDzrm4gua-EKzKmw:1655310243881&q=install+Google+Chrome&sa=X&ved=2ahUKEwilldGY76_4AhUrTjABHXTvAG8Q7xYoAHoECAIQMA&biw=1279&bih=951&dpr=1       
+          " 
+          target="_blank">
+         Debes instalar el navegador Google Chrome
+          </a>
+<br>
+          <p>Check out <a class="text-warning" href="https://www.google.com/search?q=Configure+Google+Chrome+como+el+navegador+predeterminado&sxsrf=ALiCzsZ_ZnL_fMF1CAyojRRwKDkMt59-Dw%3A1655309861402&source=hp&ei=JQaqYvjqFrmFwbkP_emckAM&iflsig=AJiK0e8AAAAAYqoUNbCOpQls0gitk2NqkxSmnp6XR55-&ved=0ahUKEwi4kZ_i7a_4AhW5QjABHf00BzIQ4dUDCAc&uact=5&oq=Configure+Google+Chrome+como+el+navegador+predeterminado&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECcyBggAEB4QFjIGCAAQHhAWOgcIIxDqAhAnOg0ILhDHARCjAhDqAhAnUL8CWL8CYJQJaAFwAHgAgAHjAYgB4wGSAQMyLTGYAQCgAQKgAQGwAQo&sclient=gws-wiz" 
+              target="_blank">    <i class="fa fa-location-arrow" aria-hidden="true"></i> Configure Google Chrome como el navegador predeterminado</a>.</p>
+        
 
+          </div>
 
 <script>
 

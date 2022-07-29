@@ -18,9 +18,7 @@
   <script type="text/javascript" src="{{ asset('js/deletrearPalabra.js') }}" defer></script>
      
 
-     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-  
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
    <!-- animate-->
    <link     rel="stylesheet"     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"   />
@@ -63,11 +61,13 @@
 
         <ul class="nav p-4" id="nav_inicio">
             <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#" onclick="direccionarVista('instalar')">
+              <a class="nav-link text-white" aria-current="page" href="#" onclick="direccionarVista('home')">
                 <i class="fa fa-reply" aria-hidden="true"></i>
 
                 REGRESAR</a>
             </li>
+
+         
       
          
           </ul>

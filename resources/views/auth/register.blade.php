@@ -5,15 +5,20 @@
 
 
 <div class="container">
-    <div class="d-flex justify-content-center text-center animate__animated animate__bounce">
-        <div class="">
+    <div class="d-flex  justify-content-center text-center animate__animated animate__bounce" >
+        <div class="" style="width: 40rem;" >
             <div class="card bg-dark text-white" >
                 <div class="card-header animate__animated animate__bounce text-warning">
                     <h3>REGISTER</h3>
                     </div>
-
+                    @if(session("error"))
+                    <div  id="avisoUsuarioExiste">
+                    <h3 class="text-danger" >Este usuario ya existe</h3>
+                    </div>
+             
+           @endif
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('registrarme') }}">
                         @csrf
 
                         <div class="row mb-3 animate__animated animate__bounce">
@@ -92,10 +97,13 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-center ">
 
-    <img style=" opacity: 0.1 !important; " src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
-  
-</div>
+<script>
+  setTimeout(function(){ ocultarAviso(); }, 2500);
+     function ocultarAviso(){
+        document.getElementById("avisoUsuarioExiste").innerHTML = "";
+     }
+</script>
+
 
 @endsection

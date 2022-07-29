@@ -76,10 +76,7 @@ color: #FFCA28;
       <h6 class="colorAviso">sobre el campo <strong class="text-danger">Redirect URL</strong>   </h6>
       <h6 class="colorAviso">y presionas el boton  <span class="text-danger"><strong> Save</strong> </span>  </h6>
 
-  
-      <h6 class="text-secondary">**Despues de presionar Save, Cierra todas la pestañas**</h6>
-
-
+ 
     
    
     </div>
@@ -110,10 +107,7 @@ color: #FFCA28;
     
 <div class="footer p-4">
   <h1 class=" titulo2  plus"  id="confugurar1" >PLUS INGLES  </h1>
-  <div class="d-flex justify-content-center animate__animated animate__bounceIn">
-    <img class="imagenesPortadaFondo  " src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
-  
-</div>
+
 </div>
 
 

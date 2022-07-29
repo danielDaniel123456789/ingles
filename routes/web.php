@@ -84,3 +84,6 @@ use App\Http\Controllers\ImagenFondoController;
     Route::get('configurarVoz', [VozController::class, 'configurarVoz'])->name('configurarVoz');
     Route::get('configuracion', [VozController::class, 'configuracion'])->name('configuracion');
     //Route::get('/configuracion', function () {    return view('configuracion/configuracion');});
+
+
+    

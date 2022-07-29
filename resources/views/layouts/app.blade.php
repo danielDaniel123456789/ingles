@@ -102,7 +102,8 @@
                                 </a>
 
                             </li>
-                            <li class="nav-link" >
+                            
+                         <li class="nav-link" >
                                 <a  href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
@@ -114,6 +115,8 @@
                              </form>
 
                             </li>
+
+                          
                         @endguest
                     </ul>
                 </div>

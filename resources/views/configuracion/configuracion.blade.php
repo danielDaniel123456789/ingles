@@ -16,6 +16,7 @@ justify-content: center;
 text-align: center;
 bottom: 180px;
 opacity: 0.63;
+z-index: -8 !important;
 
   }
 </style>
@@ -59,11 +60,9 @@ $id=0;
           Si al presionar Play no suena,
         </h6>
         <h6 class="text-white">
-          debes hacerlo hasta que 
+        es porque tienes mala conexión a internet
         </h6>
-        <h6 class="text-white">
-          tengas buena conexión a internet.
-        </h6>
+    
        
       </div>
      
