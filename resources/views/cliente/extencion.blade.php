@@ -2,6 +2,7 @@
 @extends('layouts.appInstalar')
 
 @section('content')
+
 <style>
   .colorAviso{
     color: #FFCA28;
@@ -64,7 +65,7 @@ color: #FFCA28;
 <div class="container p-2 text-center animate__animated animate__bounceIn" id="div_imagen" style="display:none">
  
 
-    <img  src="/img/option2.png"  width="60%" alt="...">
+    <img  src="./img/option2.png"  width="60%" alt="...">
 <br>
 <div class="p-4">
 
@@ -73,7 +74,7 @@ color: #FFCA28;
       <h6 class="colorAviso"> El link que copiaste lo pegaras </h6>
     
       <h6 class="colorAviso">sobre el campo <strong class="text-danger">Redirect URL</strong>   </h6>
-      <h6 class="colorAviso">y presionas el botón  <span class="text-danger"><strong> Save</strong> </span>  </h6>
+      <h6 class="colorAviso">y presionas el boton  <span class="text-danger"><strong> Save</strong> </span>  </h6>
 
   
       <h6 class="text-secondary">**Despues de presionar Save, Cierra todas la pestañas**</h6>
@@ -98,7 +99,7 @@ color: #FFCA28;
     
   <h6>Copiar</h6>
     
-    <input type="text" value="https://usuarios.click/ingles/home" id="myInput" hidden>
+    <input type="text" value="https://usuarios.click/curso/curso" id="myInput" hidden>
     
     <button onclick="portapapeles()">Copiar</button>
 

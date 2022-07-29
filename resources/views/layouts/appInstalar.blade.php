@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="{{ asset('js/portada.js') }}" defer></script>
@@ -62,7 +63,7 @@
 
         <ul class="nav p-4" id="nav_inicio">
             <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#" onclick="direccionarVista('instalar')">
+              <a class="nav-link text-white" aria-current="page" href="#" onclick="direccionarVista('')">
                 <i class="fa fa-reply" aria-hidden="true"></i>
 
                 REGRESAR</a>

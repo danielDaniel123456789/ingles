@@ -121,7 +121,7 @@ color: #FFCA28;
          <div class="carousel-item active">
            <h5 class="text-white paso">PASO 1</h5>
            <div class="container p-4">
-             <img class="imgEfectos" src="/img/a.png" width="60%" alt="...">
+             <img class="imgEfectos" src="./img/a.png" width="60%" alt="...">
            </div>
         
        
@@ -129,7 +129,7 @@ color: #FFCA28;
          <div class="carousel-item">
            <h5  class="text-white paso">PASO 2</h5>
            <div class="container p-4">
-             <img class="imgEfectos" src="/img/imagen2.png" width="70%"  alt="...">
+             <img class="imgEfectos" src="./img/imagen2.png" width="70%"  alt="...">
            </div>
           
           
@@ -137,7 +137,7 @@ color: #FFCA28;
          <div class="carousel-item">
            <h5  class="text-white paso">PASO 3</h5>
            <div class="container p-4">
-             <img class="imgEfectos" src="/img/c.png" width="50%" alt="...">
+             <img class="imgEfectos" src="./img/c.png" width="50%" alt="...">
            </div>
            
  
