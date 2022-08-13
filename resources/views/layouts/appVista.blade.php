@@ -13,6 +13,7 @@
   <link href="{{ asset('css/vista.css') }}" rel="stylesheet">
   <link href="{{ asset('css/canva.css') }}" rel="stylesheet">
   <script src="{{ asset('js/rutas.js') }}" defer></script>
+
   <script src="{{ asset('js/textoMoverCursor.js') }}" defer></script>
   <script src="{{ asset('js/pronunciarTexto.js') }}" defer></script>
   <script type="text/javascript" src="{{ asset('js/deletrearPalabra.js') }}" defer></script>
@@ -42,6 +43,7 @@
   <title>Plus Ingles</title>
   <link rel="icon" href="/img/logo.png" />
   <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+
 </head>
 
 <style>

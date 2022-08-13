@@ -7,7 +7,7 @@ use App\Http\Controllers\VistaController;
 use App\Http\Controllers\RegistrarmeController;
 use App\Http\Controllers\ImagenFondoController;
 
-
+Route::get('imagenes', function () {    return view('imagenes');});
     Route::prefix('admin')->group(function () {
     Route::get('/insertarNuevoVervo', function () {  return view('vervos/insertarVervo');});
     Route::get('insertarNuevoVervo', [VervoController::class, 'insertarNuevoVervo'])->name('insertarNuevoVervo');
@@ -49,16 +49,14 @@ use App\Http\Controllers\ImagenFondoController;
     Route::get('predeterminado', function () {    return view('cliente/predeterminado');});
     Route::get('instalar', function () {    return view('cliente/instalar');});
     Route::get('noPuedeHacerEvaluacion', function () {    return view('cliente/noPuedeHacerEvaluacion');});
-
     
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/', [VistaController::class, 'curso'])->name('curso');
+    Route::get('vista', [VistaController::class, 'curso'])->name('curso');
     Route::get('curso', [VistaController::class, 'curso'])->name('curso');
     Route::post('registrarme', [RegistrarmeController::class, 'registrarme'])->name('registrarme');
     Route::post('entrar', [RegistrarmeController::class, 'entrar'])->name('entrar');
-   
-
    
    // Route::get('vista', [VervoController::class, 'vista'])->name('vista');
     Route::get('listaVervosTerminada', function () {    return view('listaVervosTerminada');});

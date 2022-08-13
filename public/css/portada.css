@@ -1,5 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Poiret+One);
 
+
+.contenedor{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.centrado{
+  position: absolute;
+  top: 65%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  font-size:3em;
+font-weight: 400;
+word-spacing: 5pt; 
+
+}
+.imagenFondo{
+opacity: 0.3 !important;
+z-index: -5;
+}
+
 .moverCursor{
   position: absolute;
   top: -40px !important;
@@ -73,11 +95,25 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
+.moverPalabra{
+  position: absolute !important;
+  top: 20px;
+  opacity: 0.2 !important;
+  z-index: -1;
+  
+}
 .tituloPrincipal{
-  font-size:3em;
+  font-size:5em;
   font-weight: 400;
-  word-spacing: 5pt; 
+  word-spacing: 15pt; 
+  text-transform: capitalize;
+ 
+}
+
+.subTitulo{
+  font-size:5em;
+  font-weight: 500;
+  word-spacing: 15pt; 
   text-transform: capitalize;
  
 }

@@ -8,18 +8,6 @@
  z-index: 5 !important;
 }
 
-.wavexx {
-
-  /*
-      animation: wave  ease-in-out 0.7s infinite alternate;
-    float: left;
-    margin: 5px;
-    
-    transform-origin: center -36px;
-    z-index: 5;
-
-   */
-  }
 
 
   .wave:hover {

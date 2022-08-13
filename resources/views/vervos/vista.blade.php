@@ -29,6 +29,18 @@
       "animate__rotateIn", "animate__rotateInDownLeft", "animate__rotateInUpLeft",
       "animate__rotateInUpRight"  );
 
+      $imagenesTitulos = array(
+      "https://asepyme.com/wp-content/uploads/2019/05/preguntas-correctas.png",
+      "https://cdn-icons-png.flaticon.com/512/2353/2353677.png",
+      "https://www.matchbox.io/content/images/2020/05/QOTD-logo.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMp4QMt_vPQZKsXl_Q1XRXcxqcaNG1MOxJ5etDymUfn8x1tS7UGkvz5Yaoeae3_Vo1Wuw&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNP90vq48riULjyTv7lW9xQ2FjYtNTh_no9mvctowQdzutbn09DHt7lf5VjDCHly-i9_c&usqp=CAU",
+      "https://elrincondetrabajoliterario.files.wordpress.com/2014/09/inter-2.png",
+      "https://gesvin.files.wordpress.com/2018/04/comoformularpreguntasefectivas4tc3a9cnicasaula-artc3adculo-bloggesvin.jpg",
+      "https://img.freepik.com/vector-gratis/ilustracion-concepto-preguntas_114360-1513.jpg"
+
+    );
+
      $colores = array(
       "#B71C1C","#880E4F","#4A148C","#311B92", "#0D47A1","#01579B", "#006064",
       "#1B5E20", "#827717", "#F57F17", "#BF360C"
@@ -41,6 +53,8 @@
       $animacion=  $animaciones[array_rand($animaciones)] ;
       $color=  $colores[array_rand($colores)] ;
       $colorBrillante= $coloresBrillantes[array_rand($coloresBrillantes)];
+      $imagenesTitulo=$imagenesTitulos[array_rand($imagenesTitulos)];
+
 @endphp
 @foreach ($data as $item)   
 <?php   
@@ -62,20 +76,34 @@ else {
 @endforeach
 
 
+
+
+
 <div id="x" class="moverCursor" style="color:{{$color}}; " onclick="direccionarGoogle()">
 
   <div id="cursorLetra" class="">
-    <span class="cursorLetra" >
-      {{$palabraIngles}}
+    <span class="cursorLetra " >
+      {{$palabraIngles}}  
     </span>
   </div>
 </div>
 
-<div class="container text-center">
-  <div id="titulo" class="tituloPrincipal">
+
+  <div class="container text-center ">
+  <div id="titulo" class="tituloPrincipal animate__animated wave {{$animacion}}">
   {{$palabraIngles}}
   </div>
-  
+
+   <div class="contenedor animate__animated {{$animacion}}">
+   <img class="imagenFondo wave" onclick="direccionarGoogle()" src="{{$imagenesTitulo}}"  alt="">
+ 
+
+  <div class="centrado subTitulo wave">
+  <span class="" style="color:{{$color}}">
+    ...{{$palabraIngles}}??
+    </span>
+  </div>
+</div>
 
 </div>
 
@@ -163,6 +191,10 @@ onclick="direccionarGoogle()" >
   </div>
 </div>
 
+</div>
+
+<div id="moverPalabra" class="moverPalabra">
+  <h1>  {{$palabraEspayol}} {{$palabraIngles}}  </h1>
 </div>
 
 <input id="myInput" type="text" value="yyy" hidden>
@@ -325,6 +357,32 @@ document.getElementById("mensajeAprendida").style.display = "block";
 setTimeout(function(){  document.getElementById("myForm").submit(); },2500);
  document.getElementById("myForm02").submit();
 }
+
+
+
+let ball = document.getElementById("moverPalabra");
+  
+var myVar = setInterval(spostaDiv, 90);
+var margin = 0;
+
+let l = window.screen.width;
+let w =  screen.width;
+
+function spostaDiv() {
+  console.log(w);
+  if (margin == w) {
+    margin = 0 + "px";
+  } else {
+    ball.style.marginLeft = margin + "px";
+  }
+  margin += 10;
+
+  if(margin>screen.width){
+     margin=0;
+      spostaDiv();
+  }
+}
+
 
   </script>
 
