@@ -77,8 +77,8 @@ body {
 .tituloPrincipal{
   font-size:3em;
   font-weight: 400;
-
   word-spacing: 5pt; 
+  text-transform: capitalize;
  
 }
 

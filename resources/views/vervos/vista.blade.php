@@ -69,8 +69,17 @@ else {
       {{$palabraIngles}}
     </span>
   </div>
- 
 </div>
+
+<div class="container text-center">
+  <div id="titulo" class="tituloPrincipal">
+  {{$palabraIngles}}
+  </div>
+  
+
+</div>
+
+
 <div id="escucharClick" class="escucharClick" onclick="direccionarGoogle()" onmouseover="eventoDireccionar()">
 </div>
 <div id="recordatorio" class="container d-flex recordatorio " onmouseover="eventoDireccionar()" 
@@ -138,8 +147,9 @@ onclick="direccionarGoogle()" >
 </div>
 
 
-
 <div id="mensajeAprendida" class="mensajeAprendida " style="display: none">
+
+
   <div class="d-flex justify-content-center">
     <div class="centrar animate__animated animate__backInDown">
       <div class="card bg-dark">
@@ -158,14 +168,39 @@ onclick="direccionarGoogle()" >
 <input id="myInput" type="text" value="yyy" hidden>
 <script>
         var index = 0;
+        var contador=0;
         var text = "{{$palabraIngles}}";
         var tiempoDeEspera = 80;
-       
+
+ 
   //setTimeout(function(){  document.getElementById("x").style.display = "block";; }, 1000);
   
   cambiarColor();
+  cambiarPalabraTitulo();
+function cambiarPalabraTitulo(){
+  if(contador==0){
 
-  //mostrarPalabra();
+    document.getElementById("titulo").innerHTML = `
+    <span class="" style="color:{{$color}}">
+      {{$palabraEspayol}}    {{$palabraEspayol}}    {{$palabraEspayol}}  {{$palabraEspayol}}    {{$palabraEspayol}}    {{$palabraEspayol}}
+    </span>
+   `;
+   contador++;   
+     setTimeout(function(){  cambiarPalabraTitulo(); }, 1000);
+  }
+
+  else{
+
+    document.getElementById("titulo").innerHTML = `
+    <span class="" style="color:#FF1493">
+      {{$palabraIngles}}   {{$palabraIngles}}   {{$palabraIngles}}   {{$palabraIngles}}   {{$palabraIngles}}   {{$palabraIngles}}
+    </span>
+   `;
+   contador=0;
+   setTimeout(function(){  cambiarPalabraTitulo(); }, 1000);
+  }
+
+}
 
 function mostrarPalabra(){
   document.getElementById("mostrarPalabra").innerHTML = `
