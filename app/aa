@@ -1,0 +1,15 @@
+git init //iniciar
+git add README.md  //agregar contenido o cambios realizados
+git status //archivos en rojo a subir
+git add . //actualizar archivos de manera local al repositorio
+git status //archivos en vender indica que estan preparados para subir
+git commit -m "domingo" //indicar la descriccion para estar al tanto
+git log //Ver cambios echos en el proyecto.
+
+//direccion a guardar la cual gitHub.
+//cada proyecto tiene su propia direccion
+git remote add origin  https://github.com/danielDaniel123456789/MI_CODIGO.git
+git remote add origin https://github.com/danielDaniel123456789/CRUD_Daniel.git
+git branch -M main  //indicar que es la rama principal del proyecto
+git push -u origin main  //enviar archivos al repositorio
+NOTA: pedira nombre de usuario con que me registre en el repositorio y contraseña.
