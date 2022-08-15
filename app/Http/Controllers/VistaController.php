@@ -14,6 +14,44 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class VistaController extends Controller
 {
+  
+
+  public function recordatorio(){
+      
+    // return $_COOKIE["cursoIngles"];
+    if(!isset($_COOKIE["cursoIngles"])){   return redirect('login'); }
+
+//return 'ss';
+    
+     $user = User::where('email', $_COOKIE["cursoIngles"])->get();
+     $userID=$user[0]->id;
+
+     //$this->existePrioridades($userID.'yuuu');
+   if($this->existePrioridades($this->idUser())==1) {
+     return $this->mostrarPrioridades();
+   }
+
+   $velocidad=$this->velocidad();
+   
+   $cantidad=$this->cantidadVervosAprendidos();
+ 
+   //return $this->proximo_id_a_buscar();
+   
+   $data = $this->buscarProximoVervo();
+   //return $data;
+   if(count($data)>0){
+     $imagenFondo= $this->obtenerImagenFondo();
+     return view('vervos/recordatorio', compact('data','cantidad','imagenFondo','velocidad'));
+   }
+   else{
+     return view('cliente/comprarPalabras');
+   }
+
+
+
+
+ }
+
 
     public function curso(){
       

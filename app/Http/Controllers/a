@@ -1,37 +1,15 @@
+git init //iniciar
+git add README.md  //agregar contenido o cambios realizados
+git status //archivos en rojo a subir
+git add . //actualizar archivos de manera local al repositorio
+git status //archivos en vender indica que estan preparados para subir
+git commit -m "sabado 13 agosto" //indicar la descriccion para estar al tanto
+git log //Ver cambios echos en el proyecto.
 
-
-**********************************************************
-composer create-project laravel/laravel:^8.0 nombreProyecto
-.env -->insertar el nombre db
-autenticacion-->composer require laravel/ui --dev
--->php artisan ui vue --auth
--->npm install -->npm run dev -->php artisan migrate
-************************************************************************
-****FULL ALL --> php artisan make:model Voz --all --api
-***PIVOTE ORDEN ALFABETICO (_) SINGULAR
-***PIVOTE-->php artisan make:migration category_product_table --create=category_product
---> php artisan db:seed
---> php artisan migrate:fresh
---> php artisan migrate:refresh --seeder
---> php artisan migrate:rollback 1
---> -->php artisan passport:install
-
-************************************************************************
-extraer un unico valor desde controler laravel
-   return data[0]->id;
-************************************************************************
-sumar filas>>
- views = Aprendida::where('user_id', this->idUser())->get()->sum('aprendida'); 
-ROUTE API:
-use App\Http\Controllers\NombreController;
-Route::resource('posts', NombreController::class);
-
-use App\Http\Controllers\VervosController;
-Route::post('formExamen', [VervosController::class, 'formExamen'])->name('formExamen');
-Route::get('formExamen', [VervosController::class, 'formExamen'])->name('formExamen');
-
-
-************************************************************************
-devuelve en la terminal los route ordenados:
-install-->composer require wulfheart/pretty_routes
-obtener lista-->php artisan route:pretty
+//direccion a guardar la cual gitHub.
+//cada proyecto tiene su propia direccion
+git remote add origin  https://github.com/danielDaniel123456789/MI_CODIGO.git
+git remote add origin https://github.com/danielDaniel123456789/CRUD_Daniel.git
+git branch -M main  //indicar que es la rama principal del proyecto
+git push -u origin main  //enviar archivos al repositorio
+NOTA: pedira nombre de usuario con que me registre en el repositorio y contraseña.

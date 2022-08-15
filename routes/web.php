@@ -53,6 +53,7 @@ Route::get('imagenes', function () {    return view('imagenes');});
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/', [VistaController::class, 'curso'])->name('curso');
+    Route::get('recordatorio', [VistaController::class, 'recordatorio'])->name('recordatorio');
     Route::get('vista', [VistaController::class, 'curso'])->name('curso');
     Route::get('curso', [VistaController::class, 'curso'])->name('curso');
     Route::post('registrarme', [RegistrarmeController::class, 'registrarme'])->name('registrarme');
@@ -74,6 +75,8 @@ Route::get('imagenes', function () {    return view('imagenes');});
 
     use App\Http\Controllers\AprendidaController;
     Route::post('formAprendida', [AprendidaController::class, 'formAprendida'])->name('formAprendida');
+    Route::post('formAprendidaRecordatorio', [AprendidaController::class, 'formAprendidaRecordatorio'])->name('formAprendidaRecordatorio');
+    
     Route::post('repasarPalabra', [AprendidaController::class, 'repasarPalabra'])->name('repasarPalabra');
 
 
