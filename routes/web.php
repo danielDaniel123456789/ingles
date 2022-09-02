@@ -6,6 +6,13 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\VistaController;
 use App\Http\Controllers\RegistrarmeController;
 use App\Http\Controllers\ImagenFondoController;
+use App\Http\Controllers\PrioridadController;
+
+
+
+
+Route::post('limpiarPrioridades', [PrioridadController::class, 'limpiarPrioridades'])->name('limpiarPrioridades');
+
 
 Route::get('imagenes', function () {    return view('imagenes');});
     Route::prefix('admin')->group(function () {

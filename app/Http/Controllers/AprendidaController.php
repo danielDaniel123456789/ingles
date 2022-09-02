@@ -77,13 +77,14 @@ class AprendidaController extends Controller
         $idUser=$user[0]->id;
 
         if( $request->soyPrioridad =='falso'){
+            
             if($this->estaPalabraEstaAgregadaAlHistorial($request->id_vervo,$idUser)==0){
-                // return $request;
+            
              $this->insertar_al_Historial($request->id_vervo,$idUser);
              $this->actualizarGuia($request->id_vervo,$idUser);
              return redirect('recordatorio')->with('exito', 'exito');
               }
-
+          
         }
         else{
 
@@ -100,19 +101,23 @@ class AprendidaController extends Controller
  
     public function formAprendida(Request $request){
 
-        //return $request;
+
 
       if(!isset($_COOKIE["cursoIngles"])){   return redirect('login'); }
   
         $user = User::where('email', $_COOKIE["cursoIngles"])->get();
         $idUser=$user[0]->id;
-
+  //      return $this->estaPalabraEstaAgregadaAlHistorial($request->id_vervo,$idUser);
         if( $request->soyPrioridad =='falso'){
             if($this->estaPalabraEstaAgregadaAlHistorial($request->id_vervo,$idUser)==0){
                 // return $request;
              $this->insertar_al_Historial($request->id_vervo,$idUser);
              $this->actualizarGuia($request->id_vervo,$idUser);
              return redirect('curso')->with('exito', 'exito');
+              }
+
+              else{
+                $this->actualizarGuia($request->id_vervo,$idUser);
               }
 
         }

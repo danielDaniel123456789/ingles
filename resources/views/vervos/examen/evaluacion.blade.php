@@ -144,9 +144,7 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-center">
-  <img class="imagenesPortadaFondo" src="{{$imagenFondo}}" alt="">
-</div>
+
 
 <script>
 

@@ -8,19 +8,9 @@
 @php
    
     $animaciones = array(
-      "animate__bounce", "animate__flash", "animate__pulse", "animate__rubberBand"  );
+      "animate__zoomIn", "animate__rubberBand" );
 
-      $imagenesTitulos = array(
-      "https://asepyme.com/wp-content/uploads/2019/05/preguntas-correctas.png",
-      "https://cdn-icons-png.flaticon.com/512/2353/2353677.png",
-      "https://www.matchbox.io/content/images/2020/05/QOTD-logo.png",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMp4QMt_vPQZKsXl_Q1XRXcxqcaNG1MOxJ5etDymUfn8x1tS7UGkvz5Yaoeae3_Vo1Wuw&usqp=CAU",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNP90vq48riULjyTv7lW9xQ2FjYtNTh_no9mvctowQdzutbn09DHt7lf5VjDCHly-i9_c&usqp=CAU",
-      "https://elrincondetrabajoliterario.files.wordpress.com/2014/09/inter-2.png",
-      "https://gesvin.files.wordpress.com/2018/04/comoformularpreguntasefectivas4tc3a9cnicasaula-artc3adculo-bloggesvin.jpg",
-      "https://img.freepik.com/vector-gratis/ilustracion-concepto-preguntas_114360-1513.jpg"
-
-    );
+  
 
      $colores = array(
       "#4A235A", "#7D6608", "#186A3B"
@@ -33,7 +23,7 @@
       $animacion=  $animaciones[array_rand($animaciones)] ;
       $color=  $colores[array_rand($colores)] ;
       $colorBrillante= $coloresBrillantes[array_rand($coloresBrillantes)];
-      $imagenesTitulo=$imagenesTitulos[array_rand($imagenesTitulos)];
+   
 
 @endphp
 @foreach ($data as $item)   

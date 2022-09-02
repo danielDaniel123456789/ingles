@@ -84,24 +84,27 @@ public function subirNivelVervo(Request $request){
     }
     
  public function   evaluacionBajarNivelVervo(Request $request){
-    //return $request;
-    $bajarNivel= $request->nivel-1;
-    if($bajarNivel<0){
-      Historial_vervo::where('id_historial',$request->id)
+   // return $request;
+
+
+    Historial_vervo::where('id_historial',$request->id)
             ->where('id_user',$this->idUser())
              ->delete();
-    }
-    else{
-        Historial_vervo::where('id_historial', $request->id)
-        ->where('id_user', $this->idUser())
-                   ->update(['nivelAprendizaje' => $bajarNivel]);
-    }
-  
-               return redirect('evaluacion');
+        
+             
+     Prioridad::create([
+                             'id_user'=>$this->idUser(),
+                             'id_vervo' => $request->id
+            ]);     
+    
+    return redirect('evaluacion');  
+
  }
 
  public function evaluacionSubirNivelVervo(Request $request){
      //return $request;
+// Unknown column 'user_id' in 'where clause' (SQL: delete from `prioridads` where `id` = 19 and `user_id` = 1)
+
     $subirNivel= $request->nivel+1;
     if($subirNivel <0){
       Historial_vervo::where('id_historial',$request->id)
@@ -113,8 +116,17 @@ public function subirNivelVervo(Request $request){
         ->where('id_user', $this->idUser())
                    ->update(['nivelAprendizaje' => $subirNivel]);
     }
+
+    try {
+        $data=Prioridad::where('id_vervo',$request->id)
+        ->where('user_id',$this->idUser())
+         ->delete();
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
+            
   
-               return redirect('evaluacion');
+      return redirect('evaluacion');
  }
 
 public function bajarNivelVervo(Request $request){
@@ -205,13 +217,22 @@ public function informe(){
 
 public function historial(){
 
-    $imagenFondo= $this->obtenerImagenFondo();
+    $historial = DB::table('vervos')->get();
+
+    
     $data = DB::table('vervos')
                       ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_vervo')
                       ->where('historial_vervos.id_user','=',$this->idUser())
+                      ->select('vervos.*','historial_vervos.nivelAprendizaje')
+                      ->orderBy('vervos.id','ASC')
+                      ->get();
+
+    $prioridades = DB::table('vervos')
+                      ->join('prioridads', 'vervos.id', '=', 'prioridads.id_vervo')
+                      ->where('prioridads.id_user','=',$this->idUser())
                       ->select('vervos.*')
                       ->get();
-    return view('vervos/historial', compact('data','imagenFondo')); 
+    return view('vervos/historial', compact('data','prioridades','historial')); 
   
   }
 /*

@@ -63,6 +63,8 @@ class VistaController extends Controller
       $userID=$user[0]->id;
 
       //$this->existePrioridades($userID.'yuuu');
+
+ 
     if($this->existePrioridades($this->idUser())==1) {
       return $this->mostrarPrioridades();
     }
