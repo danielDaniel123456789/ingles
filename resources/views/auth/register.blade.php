@@ -89,6 +89,8 @@
                                 <button type="submit" class="btn btn-warning">
                                     REGISTER
                                 </button>
+                                <br>
+                                <a href="login">Login</a>
                             </div>
                         </div>
                     </form>

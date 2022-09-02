@@ -9,9 +9,40 @@ use Illuminate\Support\Facades\DB;
 class RegistrarmeController extends Controller
 {
 
+  public function login(Request $request){   
+    return view('auth/login');
+}
+
+
+
+public function contraseyaLogin(Request $request){
+    
+
+   //  $user = User::where('email', $request->email)->get();
+     $user = DB::table('users')
+     ->where('users.email','=', $request->email)
+     ->where('users.contraseya', $request->password)
+     ->get();
+   
+    if(count($user)>0){
+        //  return 'mayor';
+          $password = $request->email;
+          setcookie("cursoIngles", $request->email, time()+30*24*60*60);
+          return redirect('vista');
+    }
+    else{
+      return redirect('vista')->with('error','error');
+    }
+
+   
+  return $user;
+
+}
+
+
     public function entrar(Request $request){
     
-        
+        return $request;
          //  $user = User::where('email', $request->email)->get();
            $user = DB::table('users')
            ->where('users.email','=', $request->email)
@@ -25,7 +56,7 @@ class RegistrarmeController extends Controller
                 return redirect('curso');
           }
           else{
-            return redirect('login')->with('error','error');
+            return redirect('vista')->with('error','error');
           }
 
          
@@ -53,7 +84,7 @@ class RegistrarmeController extends Controller
                     'password' => $hashedPassword,
                     'contraseya' => $request->password 
                  ]);
-        return redirect('home');
+        return redirect('vista');
         
       } catch (\Throwable $th) {
         return redirect('register')->with('error','error');
@@ -65,4 +96,16 @@ class RegistrarmeController extends Controller
      
    
     }
+
+    public function cerrarSesion(){
+    
+
+      setcookie("cursoIngles", "", time() - 3600);
+ 
+
+      return view('auth/login');
+     
+   
+    }
+
 }

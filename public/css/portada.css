@@ -26,7 +26,7 @@ z-index: -5;
   position: absolute;
   top: -40px !important;
   left: -10px;
-background-color: #CCFF99;
+background-color: #484D41;
 border-radius: 50%;
   font-size: 45px !important;
 }
@@ -103,7 +103,7 @@ body {
   
 }
 .tituloPrincipal{
-  font-size:5em;
+  font-size:6em;
   font-weight: 400;
   word-spacing: 15pt; 
   text-transform: capitalize;
@@ -136,7 +136,7 @@ img.colorImagenVista{
   top: 150px !important;
  padding-left: 30px ;
  z-index: 5 !important;
- opacity: 0.3;
+
 }
 
 .configuracionHover:hover {

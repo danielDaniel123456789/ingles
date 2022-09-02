@@ -5,7 +5,7 @@ const PHI = (1 + Math.sqrt(5)) / 2, // 1.618033988749895
       rotationSpeed = 0.3,
       totalIterations = Math.floor(duration / frameDuration),
       maxBaseSize = 100,
-      baseSizeSpeed = 0.02;
+      baseSizeSpeed = 0.9;
 
     var canvas = document.getElementById("canvas"),
       ctx = canvas.getContext("2d"),
@@ -16,14 +16,14 @@ const PHI = (1 + Math.sqrt(5)) / 2, // 1.618033988749895
       iteration = 0,
       animationDirection = 1,
       sizeVariationRange = .15,
-      baseRotation = 40,
-      baseSize = 150,
+      baseRotation = 10,
+      baseSize = 3,
       c1 = 43,
       c1S = 1,
-      c2 = 205,
-      c2S = 1,
+      c2 = 705,
+      c2S = 5,
       c3 = 255,
-      c3S = 1;
+      c3S = 16;
 
     canvas.setAttribute("width", canvasWidth);
     canvas.setAttribute("height", canvasHeight);

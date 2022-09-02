@@ -26,10 +26,11 @@ class VistaController extends Controller
      $user = User::where('email', $_COOKIE["cursoIngles"])->get();
      $userID=$user[0]->id;
 
-     //$this->existePrioridades($userID.'yuuu');
+   //$this->existePrioridades($userID.'yuuu');
    if($this->existePrioridades($this->idUser())==1) {
-     return $this->mostrarPrioridades();
-   }
+    return $this->mostrarPrioridadesRecordatorio();
+  }
+
 
    $velocidad=$this->velocidad();
    
@@ -47,18 +48,16 @@ class VistaController extends Controller
      return view('cliente/comprarPalabras');
    }
 
-
-
-
  }
 
 
     public function curso(){
       
      // return $_COOKIE["cursoIngles"];
-     if(!isset($_COOKIE["cursoIngles"])){   return redirect('login'); }
+     if(!isset($_COOKIE["cursoIngles"])){ 
+          return redirect('login');
+     }
 
-//return 'ss';
      
       $user = User::where('email', $_COOKIE["cursoIngles"])->get();
       $userID=$user[0]->id;
@@ -72,6 +71,7 @@ class VistaController extends Controller
     
     $cantidad=$this->cantidadVervosAprendidos();
   
+ 
     //return $this->proximo_id_a_buscar();
     
     $data = $this->buscarProximoVervo();
@@ -84,9 +84,6 @@ class VistaController extends Controller
       return view('cliente/comprarPalabras');
     }
 
-
-
-
   }
 
   public function buscarProximoVervo(){
@@ -97,6 +94,27 @@ class VistaController extends Controller
    
 
   }
+  
+
+  public function mostrarPrioridadesRecordatorio(){
+    //return 99;
+    $user = User::where('email', $_COOKIE["cursoIngles"])->get();
+    $userID=$user[0]->id;
+  
+    $velocidad=$this->velocidad();
+    $cantidad=$this->cantidadPalabrasAprendidas($userID);
+  
+    $data = DB::table('vervos')
+                    ->join('prioridads', 'vervos.id', '=', 'prioridads.id_vervo')
+                    ->select('vervos.*', 'prioridads.id as prioridad')
+                    ->limit(1)
+                     ->get();          
+    //return $data;
+    $imagenFondo= $this->obtenerImagenFondo();
+                 return view('vervos/vista', compact('data', 'cantidad','imagenFondo','velocidad'));   
+  }
+  
+
 
 public function mostrarPrioridades(){
   //return 99;

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appVista')
 
 @section('content')
 
@@ -11,7 +11,7 @@
                     </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('contraseyaLogin') }}">
                         @csrf
 
                         <div class="row mb-3 animate__animated animate__bounce">
@@ -80,7 +80,6 @@
 </div>
 <div class="d-flex justify-content-center ">
 
-    <img style=" opacity: 0.1 !important; " src="https://static.preply.com/static/ssr/_next/static/images/choose_tutor-ce5a3d44c76764b9a533e8a8dadc2a57.svg" alt="">
-  
+<a class="nav-link" href="#" onclick="direccionarVista('register')"> Registrar</a>
 </div>
 @endsection

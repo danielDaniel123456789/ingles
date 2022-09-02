@@ -5,15 +5,27 @@
 
 
 
+<style>
+  body{
+    background-color: black !important;
+  
+ 
+ 
+
+  }
+
+
+
+
+</style>
+
 
 
 
 @php
    
     $animaciones = array(
-      "animate__bounce", "animate__flash","animate__pulse",
-      "animate__rubberBand","animate__shakeY","animate__swing","animate__wobble",
-      "animate__jello", "animate__heartBeat"
+      "animate__heartBeat", "animate__zoomIn"
    
       
        );
@@ -21,8 +33,7 @@
 
 
      $colores = array(
-      "#B71C1C","#880E4F","#4A148C","#311B92", "#0D47A1","#01579B", "#006064",
-      "#1B5E20", "#827717", "#F57F17", "#BF360C"
+      "#BEFF33","#D7E976", "#9EE976", "#76E988", "#76E9C2"
      );
 
      $coloresBrillantes= array(
@@ -54,21 +65,30 @@ else {
 ?>   
 @endforeach
 
-<div class="container text-center ">
-  <div id="titulo" class="tituloPrincipal animate__animated wave {{$animacion}}">
-  {{$palabraIngles}}
-  </div>
 
+
+
+<div class="container text-center ">
+
+
+    <div id="titulo" class="tituloPrincipal animate__animated wave {{$animacion}}">
+    {{$palabraIngles}}
+    </div>
+
+ 
 </div>
+
+
+
 
 
 
 <div class="d-flex justify-content-center" >
 
         <div class="card p-2 bg-dark text-center" style="width: 18rem;"  id="microfono">  
-        <h3 class="text-white">Segundos </h3> 
-        <div class="p-2">
-        <input  type="number" min="2"  id="idSonido" value="60" class="form-control" >
+                <h3 class="text-white">Segundos </h3> 
+                <div class="p-2">
+                <input  type="number" min="2"  id="idSonido" value="60" class="form-control" >
         </div>
         
         <a href="#" onclick="sonido()"> <i class="p-4 text-white fa-2x fa fa-microphone" aria-hidden="true"></i></a>
@@ -79,7 +99,7 @@ else {
 
 
 <div id="divAprendida"   style="display:none">
-<div class="d-flex justify-content-center" >
+<div class="d-flex justify-content-center text-center" >
 <div class=" animate__animated animate__fadeInUp" id="palabraAprendida">
 
       <div id="textoAprendidaEfecto" >
@@ -88,6 +108,11 @@ else {
          <i   class=" fa fa-check-square-o fa-2x " aria-hidden="true"></i>
       </a>
 </div>
+
+<div class="p-5">
+<h6 style="color:{{$color}}">Imagina la imagen</h6>
+</div>
+
 </div>
 
 </div>

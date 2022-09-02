@@ -52,12 +52,25 @@
   }
 </style>
 
-<body onload="move();">
+
+               
+<body >
+
+
+                    <!-- Authentication Links -->
+              
+    
+       
+
     <div id="app">
+ 
+
       <canvas id="canv"></canvas>
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    
 </body>
 </html>

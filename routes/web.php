@@ -56,8 +56,16 @@ Route::get('imagenes', function () {    return view('imagenes');});
     Route::get('recordatorio', [VistaController::class, 'recordatorio'])->name('recordatorio');
     Route::get('vista', [VistaController::class, 'curso'])->name('curso');
     Route::get('curso', [VistaController::class, 'curso'])->name('curso');
+
+
+    
     Route::post('registrarme', [RegistrarmeController::class, 'registrarme'])->name('registrarme');
     Route::post('entrar', [RegistrarmeController::class, 'entrar'])->name('entrar');
+    
+    Route::get('cerrarSesion', [RegistrarmeController::class, 'cerrarSesion'])->name('cerrarSesion');
+    Route::get('login', [RegistrarmeController::class, 'login'])->name('login');
+    Route::post('contraseyaLogin', [RegistrarmeController::class, 'contraseyaLogin'])->name('contraseyaLogin');
+    
    
    // Route::get('vista', [VervoController::class, 'vista'])->name('vista');
     Route::get('listaVervosTerminada', function () {    return view('listaVervosTerminada');});

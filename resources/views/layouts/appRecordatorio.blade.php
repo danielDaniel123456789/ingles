@@ -52,9 +52,20 @@
 </style>
 
 <body>
+
+<ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
+              
+                    <div class="p-2">
+<a href="cerrarSesion" class=""><i class="fa-2x fa fa-times-circle-o" style="color:{{$color}};"  aria-hidden="true"></i></a> 
+<a href="javascript:direccionarVista('vista')"><i  style="color:{{$color}};" class="fa-2x  fa fa-home" aria-hidden="true"></i></a>
+
+
+</div>
+                
     <div id="app">
       <canvas id="canv"></canvas>
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>

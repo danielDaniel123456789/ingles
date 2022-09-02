@@ -5,29 +5,10 @@
 
 
 
-
-
-<style>
-
-.efectoSombra1{  text-shadow: red 1px 0 10px !important;}
-.efectoSombra2{ text-shadow: #7D3C98 1px 0 10px !important;}
-.mostrarPalabra{ font-size: 16px !important; }
-.recordatorio {     
-    position: absolute; top: 0px;   
-    width: 100%;   
-    z-index: 16 !important;
-  }
-</style>
 @php
    
     $animaciones = array(
-      "animate__bounce", "animate__flash",
-     "animate__shakeX", "animate__shakeX",
-     "animate__tada", "animate__tada", "animate__jello", "animate__heartBeat",
-     "animate__bounceIn", "animate__bounceInDown", "animate__fadeInDown",
-     "animate__fadeInUp", "animate__fadeInUp", "animate__flipInY",
-      "animate__rotateIn", "animate__rotateInDownLeft", "animate__rotateInUpLeft",
-      "animate__rotateInUpRight"  );
+      "animate__bounce", "animate__flash", "animate__pulse", "animate__rubberBand"  );
 
       $imagenesTitulos = array(
       "https://asepyme.com/wp-content/uploads/2019/05/preguntas-correctas.png",
@@ -42,8 +23,7 @@
     );
 
      $colores = array(
-      "#B71C1C","#880E4F","#4A148C","#311B92", "#0D47A1","#01579B", "#006064",
-      "#1B5E20", "#827717", "#F57F17", "#BF360C"
+      "#4A235A", "#7D6608", "#186A3B"
      );
 
      $coloresBrillantes= array(
@@ -79,44 +59,26 @@ else {
 
 
 
-<div id="x" class="moverCursor" style="color:{{$color}}; " onclick="direccionarGoogle()">
 
-  <div id="cursorLetra" class="">
-    <span class="cursorLetra " >
-      {{$palabraIngles}}  
-    </span>
-  </div>
-</div>
 
 
   <div class="container text-center ">
   <div id="titulo" class="tituloPrincipal animate__animated wave {{$animacion}}">
-  {{$palabraIngles}}
+    <h1 style="color:{{$color}}" >  {{$palabraIngles}} </h1>
+    <h1 style="color:{{$color}}">  {{$palabraEspayol}}</h1>
+
+
   </div>
 
-   <div class="contenedor animate__animated {{$animacion}}">
-   <img class="imagenFondo wave" onclick="direccionarGoogle()" src="{{$imagenesTitulo}}"  alt="">
- 
 
-  <div class="centrado subTitulo wave">
-  <span class="" style="color:{{$color}}">
-    ...{{$palabraIngles}}??
-    </span>
-  </div>
-</div>
 
 </div>
 
 
-<div id="escucharClick" class="escucharClick" onclick="direccionarGoogle()" onmouseover="eventoDireccionar()">
-</div>
-<div id="recordatorio" class="container d-flex recordatorio " onmouseover="eventoDireccionar()" 
-onclick="direccionarGoogle()" >
-
-</div>
 
 
-<div id="cuerpo"  onclick="direccionarGoogle()">
+
+<div id="cuerpo"  >
   
 <div id="pantalla">
   <div class="configuracion">
@@ -126,9 +88,18 @@ onclick="direccionarGoogle()" >
   <br><br>
  
   <a href="javascript:direccionarVista('evaluacion')"><i class="fa fa-gavel fa-2x configuracionHover" style="color:{{$color}};" aria-hidden="true"></i></a>
-  <br><br> <br><br>
+  <br><br> 
   <a href="#" onclick="copiarLink()"><i style="color:{{$color}};" class="fa fa-clone fa-2x configuracionHover" aria-hidden="true"></i></a>
-  
+  <br><br> 
+  <a href="javascript:direccionarVista('recordatorio')"><i  style="color:{{$color}};" class="fa-2x  fa fa-assistive-listening-systems" aria-hidden="true"></i></a>
+<br><br>
+<a href="javascript:direccionarVista('vista')"><i  style="color:{{$color}};" class="fa-2x  fa fa-home" aria-hidden="true"></i></a>
+
+<br><br>
+<a href="javascript:direccionarVista('cerrarSesion')"><i  style="color:{{$color}};" class="fa-2x  fa fa-power-off" aria-hidden="true"></i></a>
+
+
+
 </div>
 
  
@@ -157,20 +128,15 @@ onclick="direccionarGoogle()" >
     <div   class="aprendidaPosicion "  >
       <div id="textoAprendidaEfecto" onclick="aprendidaEvento()">
         
-         <i style="color:{{$color}}"   class=" fa fa-check-square-o fa-2x " aria-hidden="true"></i>
+   
+         <span ><i style="color:{{$color}}"   class=" fa fa-check-square-o fa-2x " aria-hidden="true"></i> 
+         <span class="fa-2x fw-bold "  style="color:{{$color}}">  {{$cantidad}} </span>
+        </span>
       </div> 
     </div>
-    <div class="container">
+
+
   
-      <ul class="nav justify-content-center ">
-      <li class="nav-item">
-        <h5>    <a class="nav-link text-secondary" style="color:{{$color}}" href="#">Palabras aprendidas: {{$cantidad}}</a>
-        </h5>
-     </li>
-     
- 
-  
-    </div>
   </div>
 </div>
 
@@ -183,7 +149,7 @@ onclick="direccionarGoogle()" >
       <div class="card bg-dark">
         <div class="container text-center p-4">
     
-          <h5 class="text-warning">Palabra Aprendida</h5>
+          <h5 style="color: ${color}">Palabra Aprendida</h5>
          <h1 class="text-warning"><i class="fa fa-check" aria-hidden="true"></i></h1>
         </div>
         </div>
@@ -193,9 +159,7 @@ onclick="direccionarGoogle()" >
 
 </div>
 
-<div id="moverPalabra" class="moverPalabra">
-  <h1>  {{$palabraEspayol}} {{$palabraIngles}}  </h1>
-</div>
+
 
 <input id="myInput" type="text" value="yyy" hidden>
 <script>
