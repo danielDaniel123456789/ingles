@@ -5,15 +5,45 @@
 
 
 
+
+
+<style>
+
+.efectoSombra1{  text-shadow: red 1px 0 10px !important;}
+.efectoSombra2{ text-shadow: #7D3C98 1px 0 10px !important;}
+.mostrarPalabra{ font-size: 16px !important; }
+.recordatorio {     
+    position: absolute; top: 0px;   
+    width: 100%;   
+    z-index: 16 !important;
+  }
+</style>
 @php
    
     $animaciones = array(
-      "animate__zoomIn", "animate__rubberBand" );
+      "animate__bounce", "animate__flash",
+     "animate__shakeX", "animate__shakeX",
+     "animate__tada", "animate__tada", "animate__jello", "animate__heartBeat",
+     "animate__bounceIn", "animate__bounceInDown", "animate__fadeInDown",
+     "animate__fadeInUp", "animate__fadeInUp", "animate__flipInY",
+      "animate__rotateIn", "animate__rotateInDownLeft", "animate__rotateInUpLeft",
+      "animate__rotateInUpRight"  );
 
-  
+      $imagenesTitulos = array(
+      "https://asepyme.com/wp-content/uploads/2019/05/preguntas-correctas.png",
+      "https://cdn-icons-png.flaticon.com/512/2353/2353677.png",
+      "https://www.matchbox.io/content/images/2020/05/QOTD-logo.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMp4QMt_vPQZKsXl_Q1XRXcxqcaNG1MOxJ5etDymUfn8x1tS7UGkvz5Yaoeae3_Vo1Wuw&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNP90vq48riULjyTv7lW9xQ2FjYtNTh_no9mvctowQdzutbn09DHt7lf5VjDCHly-i9_c&usqp=CAU",
+      "https://elrincondetrabajoliterario.files.wordpress.com/2014/09/inter-2.png",
+      "https://gesvin.files.wordpress.com/2018/04/comoformularpreguntasefectivas4tc3a9cnicasaula-artc3adculo-bloggesvin.jpg",
+      "https://img.freepik.com/vector-gratis/ilustracion-concepto-preguntas_114360-1513.jpg"
+
+    );
 
      $colores = array(
-      "#4A235A", "#7D6608", "#186A3B"
+      "#B71C1C","#880E4F","#4A148C","#311B92", "#0D47A1","#01579B", "#006064",
+      "#1B5E20", "#827717", "#F57F17", "#BF360C"
      );
 
      $coloresBrillantes= array(
@@ -23,7 +53,7 @@
       $animacion=  $animaciones[array_rand($animaciones)] ;
       $color=  $colores[array_rand($colores)] ;
       $colorBrillante= $coloresBrillantes[array_rand($coloresBrillantes)];
-   
+      $imagenesTitulo=$imagenesTitulos[array_rand($imagenesTitulos)];
 
 @endphp
 @foreach ($data as $item)   
@@ -32,8 +62,6 @@
 $id=$item->id;  $palabraIngles=$item->ingles;  
 $palabraEspayol=$item->espayol; 
 $idActual= $item->id; 
-$fraseEspayol=$item->fraseEspayol;
-$fraseIngles=$item->fraseIngles;
 $imagen=$item->imagen; 
 $tamayoImagen=strlen($imagen);
 $ancho=$item->ancho; 
@@ -51,68 +79,56 @@ else {
 
 
 
+<div id="x" class="moverCursor" style="color:{{$color}}; " onclick="direccionarGoogle()">
 
+  <div id="cursorLetra" class="">
+    <span class="cursorLetra " >
+      {{$palabraIngles}}  
+    </span>
+  </div>
+</div>
 
 
   <div class="container text-center ">
-  <div >
-    <h1 style="color:{{$color}}" >  {{$palabraIngles}}:: {{$palabraEspayol}} </h1>
-
-    <div  id="palabraAprendida">
-    <div   class="aprendidaPosicion "  >
-      <div id="textoAprendidaEfecto" onclick="aprendidaEvento()">
-        
-   
-         <span ><i style="color:{{$color}}"   class=" fa fa-check-square-o fa-2x " aria-hidden="true"></i> 
-         <span class="fa-2x fw-bold "  style="color:{{$color}}">  {{$cantidad}} </span>
-        </span>
-      </div> 
-    </div>
-
+  <div id="titulo" class="tituloPrincipal animate__animated wave {{$animacion}}">
+  {{$palabraIngles}}
   </div>
 
+   <div class="contenedor animate__animated {{$animacion}}">
+   <img class="imagenFondo wave" onclick="direccionarGoogle()" src="{{$imagenesTitulo}}"  alt="">
+ 
+
+  <div class="centrado subTitulo wave">
+  <span class="" style="color:{{$color}}">
+    ...{{$palabraIngles}}??
+    </span>
   </div>
-
-
+</div>
 
 </div>
 
 
+<div id="escucharClick" class="escucharClick" onclick="direccionarGoogle()" onmouseover="eventoDireccionar()">
+</div>
+<div id="recordatorio" class="container d-flex recordatorio " onmouseover="eventoDireccionar()" 
+onclick="direccionarGoogle()" >
 
-@if(session("exito"))
-    <x-exito/>
-@endif
+</div>
 
-@if(session("error"))
-<x-error/>
-@endif
 
-<div id="cuerpo"  >
+<div id="cuerpo"  onclick="direccionarGoogle()">
   
 <div id="pantalla">
   <div class="configuracion">
     <a   onclick="direccionarVista('configuracion')">  <i style="color:{{$color}};  " class="configuracionHover fa fa-cogs fa-2x" aria-hidden="true"></i> </a>
-  <br>  
+  <br>  <br>
     <a  href="javascript:direccionarVista('historial')"><i style="color:{{$color}};" class="configuracionHover fa fa-book fa-2x" aria-hidden="true"></i></a>
-  <br>
+  <br><br>
  
   <a href="javascript:direccionarVista('evaluacion')"><i class="fa fa-gavel fa-2x configuracionHover" style="color:{{$color}};" aria-hidden="true"></i></a>
-  <br>
+  <br><br> <br><br>
   <a href="#" onclick="copiarLink()"><i style="color:{{$color}};" class="fa fa-clone fa-2x configuracionHover" aria-hidden="true"></i></a>
-  <br>
-  <a href="javascript:direccionarVista('recordatorio')">PALABRAS</a>
-
-  <br>
-  <a href="javascript:direccionarVista('recordatorioFrases')">FRASES</a>
-
-<br>
-<a href="javascript:direccionarVista('vista')"><i  style="color:{{$color}};" class="fa-2x  fa fa-home" aria-hidden="true"></i></a>
-
-<br>
-<a href="javascript:direccionarVista('cerrarSesion')"><i  style="color:{{$color}};" class="fa-2x  fa fa-power-off" aria-hidden="true"></i></a>
-
-
-
+  
 </div>
 
  
@@ -121,51 +137,13 @@ else {
 
   
   
-  <div class="container p-5 text-center  ">
+  <div class="container p-5 ">
 
-      <form  method="post" action="{{ route('actualizarPalabraVocabulario') }}"  >
-         @csrf
-<h4>ACTUALIZAR</h4>
-         <input type="hidden" value="{{$id}}" name="id_vervo">
+    <div class="d-flex justify-content-center" id="mostrarPalabra">
 
-         <div class="container">
-  <div class="row">
-    <div class="col">
-    <div class="mb-3">
-           <label class="form-label">Español</label>
-           <input type="text" class="form-control" name="espayol" value="{{$palabraEspayol}}"  required>
-        </div>
 
 
     </div>
-    <div class="col">
-    <div class="mb-3">
-           <label class="form-label">Ingles</label>
-           <input type="text" class="form-control" name="ingles" value="{{$palabraIngles}}"  required>
-        </div>
-
-    </div>
-    
-  </div>
-</div>
-
-       
-
-      
-
-        <div class="mb-3">
-           <label class="form-label">Frase Español</label>
-           <input type="text" class="form-control" name="fraseEspayol" value="{{$fraseEspayol}}"  required>
-        </div>
-
-        <div class="mb-3">
-           <label class="form-label">Frase Ingles</label>
-           <input type="text" class="form-control" name="fraseIngles" value="{{$fraseIngles}}"  required>
-        </div>
-
-         <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
-       </form>
-   
 
   <form id="myForm02" style="display: none" method="post" action="{{ route('formAprendida') }}"  >
     @csrf
@@ -175,7 +153,25 @@ else {
     <button type="submit" class="btn btn-primary">Listo</button>
   </form>
   
-
+  <div class="footer animate__animated animate__fadeInUp" id="palabraAprendida">
+    <div   class="aprendidaPosicion "  >
+      <div id="textoAprendidaEfecto" onclick="aprendidaEvento()">
+        
+         <i style="color:{{$color}}"   class=" fa fa-check-square-o fa-2x " aria-hidden="true"></i>
+      </div> 
+    </div>
+    <div class="container">
+  
+      <ul class="nav justify-content-center ">
+      <li class="nav-item">
+        <h5>    <a class="nav-link text-secondary" style="color:{{$color}}" href="#">Palabras aprendidas: {{$cantidad}}</a>
+        </h5>
+     </li>
+     
+ 
+  
+    </div>
+  </div>
 </div>
 
 
@@ -187,7 +183,7 @@ else {
       <div class="card bg-dark">
         <div class="container text-center p-4">
     
-          <h5 style="color: ${color}">Palabra Aprendida</h5>
+          <h5 class="text-warning">Palabra Aprendida</h5>
          <h1 class="text-warning"><i class="fa fa-check" aria-hidden="true"></i></h1>
         </div>
         </div>
@@ -197,7 +193,9 @@ else {
 
 </div>
 
-
+<div id="moverPalabra" class="moverPalabra">
+  <h1>  {{$palabraEspayol}} {{$palabraIngles}}  </h1>
+</div>
 
 <input id="myInput" type="text" value="yyy" hidden>
 <script>

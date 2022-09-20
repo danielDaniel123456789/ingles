@@ -29,6 +29,9 @@ Route::get('imagenes', function () {    return view('imagenes');});
     
     Route::post('insertarVervo', [VervoController::class, 'insertarVervo'])->name('insertarVervo');
     Route::get('demoVervo', [VervoController::class, 'demoVervo'])->name('demoVervo');
+    Route::post('actualizarPalabraVocabulario', [VervoController::class, 'actualizarPalabraVocabulario'])->name('actualizarPalabraVocabulario');
+    
+
     Route::get('/', [CategoriaController::class, 'categorias'])->name('categorias');
     Route::get('categorias', [CategoriaController::class, 'categorias'])->name('categorias');
     Route::get('nuevaCategoria', function () {    return view('categoria/agregar');});
@@ -61,6 +64,8 @@ Route::get('imagenes', function () {    return view('imagenes');});
 
     Route::get('/', [VistaController::class, 'curso'])->name('curso');
     Route::get('recordatorio', [VistaController::class, 'recordatorio'])->name('recordatorio');
+    Route::get('recordatorioFrases', [VistaController::class, 'recordatorioFrases'])->name('recordatorioFrases');
+    
     Route::get('vista', [VistaController::class, 'curso'])->name('curso');
     Route::get('curso', [VistaController::class, 'curso'])->name('curso');
 

@@ -72,6 +72,7 @@ else {
 
 
     <div id="titulo" class="tituloPrincipal animate__animated wave {{$animacion}}">
+        SOLO FRASES
     {{$palabraIngles}}
     </div>
 

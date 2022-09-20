@@ -19,6 +19,19 @@ use Redirect;
 class VervoController extends Controller
 {
 
+
+    public function actualizarPalabraVocabulario(Request $request){
+          //  return $request;
+
+            Vervo::where('id', $request->id_vervo)
+                        ->update([
+                            'espayol' => $request->espayol,
+                            'ingles' => $request->ingles,
+                            'fraseEspayol' => $request->fraseEspayol,
+                            'fraseIngles' => $request->fraseIngles,
+                 ]);
+                    return redirect('/')->with('exito', 'exito');; 
+    }
     public function insertarNuevoVervo(){
       
         $this->eresAdmistrador();
@@ -216,8 +229,40 @@ public function informe(){
 }
 
 public function historial(){
+/*
+    $animales = array (
+        "gato" => "Sunny",
+        "perro" => "Stoichkov",
+        "chimpancé" => "Muggles",
+        "chinchilla" => "Herminia",
+        "Charles",
+        "oso" => "Tarzan"
+    );
+    $animales2 = array (
+        "perro" => "Stoichkov",
+        "gato" => "Sunny",
+        "conejo" => "Tarzan",
+        "Muggles"
+    );
+    $diferencia = array_diff($animales, $animales2);
+    var_dump($diferencia);
+*/
+    $vervos = DB::table('vervos')
+ //   ->select('vervos.id')
+    ->get();
 
-    $historial = DB::table('vervos')->get();
+    $historial = DB::table('vervos')
+    ->join('historial_vervos', 'vervos.id', '=', 'historial_vervos.id_vervo')
+    ->where('historial_vervos.id_user','=',$this->idUser())
+    ->select('vervos.*','historial_vervos.nivelAprendizaje')
+    ->orderBy('vervos.id','ASC')
+    ->get();
+
+   //return $historial;
+
+   //$diferencia = array_diff    ($vervos, $historial);
+   //$diferencia = array_values ($vervos, $historial);
+//return($diferencia);
 
     
     $data = DB::table('vervos')
