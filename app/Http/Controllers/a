@@ -3,7 +3,7 @@ git add README.md  //agregar contenido o cambios realizados
 git status //archivos en rojo a subir
 git add . //actualizar archivos de manera local al repositorio
 git status //archivos en vender indica que estan preparados para subir
-git commit -m "sabado 13 agosto" //indicar la descriccion para estar al tanto
+git commit -m "xx" //indicar la descriccion para estar al tanto
 git log //Ver cambios echos en el proyecto.
 
 //direccion a guardar la cual gitHub.
