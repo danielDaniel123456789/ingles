@@ -25,7 +25,7 @@
 @php
    
     $animaciones = array(
-      "animate__heartBeat", "animate__zoomIn"
+      "animate__heartBeat"
    
       
        );
@@ -36,14 +36,11 @@
       "#BEFF33","#D7E976", "#9EE976", "#76E988", "#76E9C2"
      );
 
-     $coloresBrillantes= array(
-      "#F4D03F", "#2ECC71","#E91E63","#E53935","#66FF66"
-     );
+   
 
       $animacion=  $animaciones[array_rand($animaciones)] ;
       $color=  $colores[array_rand($colores)] ;
-      $colorBrillante= $coloresBrillantes[array_rand($coloresBrillantes)];
-   
+ 
 
 @endphp
 @foreach ($data as $item)   
@@ -66,6 +63,24 @@ else {
 @endforeach
 
 
+<div class="d-flex justify-content-center" >
+
+        <div class="card p-2 bg-dark text-center" style="width: 18rem;"  id="microfono">
+        <div class="p-2">
+          
+        <h3 class="text-white">Segundos    <a href="#" onclick="sonido()"> <i class="p-4 text-white fa-2x fa fa-microphone" aria-hidden="true"></i></a>
+</h3> 
+        <div class="btn-group" role="group" aria-label="Basic example">
+  <button  onclick="sonido8segundos()" type="button" class="btn btn-primary">8</button>
+  <button  onclick="sonido15segundos()" type="button" class="btn btn-primary">15</button>
+  <button onclick="sonido30segundos()" type="button" class="btn btn-primary">30</button>
+  <input  type="number" min="2"  id="idSonido" value="8" class="form-control" >
+</div>
+  </div>
+ </div>
+
+</div>
+
 
 
 <div class="container text-center ">
@@ -83,32 +98,6 @@ else {
 
 
 
-<div class="d-flex justify-content-center" >
-
-        <div class="card p-2 bg-dark text-center" style="width: 18rem;"  id="microfono">
-        <div class="p-2">
-          
-        <h3 class="text-white">Segundos </h3> 
-        <div class="btn-group" role="group" aria-label="Basic example">
-  <button  onclick="sonido8segundos()" type="button" class="btn btn-primary">8</button>
-  <button  onclick="sonido15segundos()" type="button" class="btn btn-primary">15</button>
-  <button onclick="sonido30segundos()" type="button" class="btn btn-primary">30</button>
-  <input  type="number" min="2"  id="idSonido" value="8" class="form-control" >
-</div>
-<br>
-
-
-                
-               
-              
-        </div>
-        
-        <a href="#" onclick="sonido()"> <i class="p-4 text-white fa-2x fa fa-microphone" aria-hidden="true"></i></a>
-
-
-      </div>
-
-</div>
 
 
 <div id="divAprendida"   style="display:none">

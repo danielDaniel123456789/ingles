@@ -23,7 +23,7 @@ class VervoController extends Controller
     public function actualizarPalabraVocabulario(Request $request){
           //  return $request;
 
-            Vervo::where('id', $request->id_vervo)
+            Vervo::where('id', $request->id_vervo)p
                         ->update([
                             'espayol' => $request->espayol,
                             'ingles' => $request->ingles,

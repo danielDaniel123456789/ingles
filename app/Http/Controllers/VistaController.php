@@ -22,14 +22,15 @@ class VistaController extends Controller
     // return $_COOKIE["cursoIngles"];
     if(!isset($_COOKIE["cursoIngles"])){   return redirect('login'); }
 
-//return 'ss';
+
     
      $user = User::where('email', $_COOKIE["cursoIngles"])->get();
      $userID=$user[0]->id;
 
    //$this->existePrioridades($userID.'yuuu');
    if($this->existePrioridades($this->idUser())==1) {
-    return $this->mostrarPrioridadesRecordatorio();
+   
+    return $this->mostrarPrioridadesFrases();
   }
 
 
@@ -42,8 +43,11 @@ class VistaController extends Controller
    $data = $this->buscarProximoVervo();
    //return $data;
    if(count($data)>0){
+
      $imagenFondo= $this->obtenerImagenFondo();
+    
      return view('vervos/recordatorioFrases', compact('data','cantidad','imagenFondo','velocidad'));
+
    }
    else{
      return view('cliente/comprarPalabras');
@@ -150,6 +154,25 @@ class VistaController extends Controller
 
   }
   
+
+  public function mostrarPrioridadesFrases(){
+     $user = User::where('email', $_COOKIE["cursoIngles"])->get();
+    $userID=$user[0]->id;
+  
+    $velocidad=$this->velocidad();
+    $cantidad=$this->cantidadPalabrasAprendidas($userID);
+  
+    $data = DB::table('vervos')
+                    ->join('prioridads', 'vervos.id', '=', 'prioridads.id_vervo')
+                    ->select('vervos.*', 'prioridads.id as prioridad')
+                    ->limit(1)
+                     ->get();          
+    //return $data;
+    $imagenFondo= $this->obtenerImagenFondo();
+                 return view('vervos/recordatorioFrases', compact('data', 'cantidad','imagenFondo','velocidad'));   
+  }
+  
+
 
   public function mostrarPrioridadesRecordatorio(){
     //return 99;

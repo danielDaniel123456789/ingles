@@ -7,7 +7,7 @@
 
 <style>
   body{
-    background-color: black !important;
+background-color: black !important;
   
  
  
@@ -25,7 +25,7 @@
 @php
    
     $animaciones = array(
-      "animate__heartBeat", "animate__zoomIn"
+      "animate__heartBeat"
    
       
        );
@@ -36,21 +36,22 @@
       "#BEFF33","#D7E976", "#9EE976", "#76E988", "#76E9C2"
      );
 
-     $coloresBrillantes= array(
-      "#F4D03F", "#2ECC71","#E91E63","#E53935","#66FF66"
-     );
+ 
 
       $animacion=  $animaciones[array_rand($animaciones)] ;
       $color=  $colores[array_rand($colores)] ;
-      $colorBrillante= $coloresBrillantes[array_rand($coloresBrillantes)];
-   
+ 
 
 @endphp
 @foreach ($data as $item)   
 <?php   
 
-$id=$item->id;  $palabraIngles=$item->ingles;  
-$palabraEspayol=$item->espayol; 
+$id=$item->id; 
+
+$fraseIngles=$item->fraseIngles;  
+$fraseEspayol=$item->fraseEspayol; 
+
+
 $idActual= $item->id; 
 $imagen=$item->imagen; 
 $tamayoImagen=strlen($imagen);
@@ -65,15 +66,43 @@ else {
 ?>   
 @endforeach
 
+<div class="d-flex justify-content-center" >
+
+        <div class="card p-2 bg-dark text-center" style="width: 18rem;"  id="microfono">
+   
+          
+        <h3 class="text-white">Segundos        <a href="#" onclick="sonido()"> <i class="p-4 text-white fa-2x fa fa-microphone" aria-hidden="true"></i></a></h3> 
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button onclick="sonido30segundos()" type="button" class="btn btn-primary">30</button>
+          <button  onclick="unMinuto()" type="button" class="btn btn-primary">1-M</button>
+          <button  onclick="dosMinutos()" type="button" class="btn btn-primary">2-MN</button>
+        
+          <input  type="number" min="2"  id="idSonido" value="8" class="form-control" >
+        </div>
+      </div>
+
+</div>
 
 
+<div class="container text-center ">
+ 
+  
+  <div id="titulo" class=" animate__animated  {{$animacion}}">
+         
+         <h6 class="text-danger">     {{$fraseIngles}}</h6>
+
+     </div>
+ 
+
+</div>
 
 <div class="container text-center ">
 
 
-    <div id="titulo" class="tituloPrincipal animate__animated wave {{$animacion}}">
-        SOLO FRASES
-    {{$palabraIngles}}
+    <div id="titulo" class=" animate__animated  {{$animacion}}">
+         
+        <h6 class="text-danger">   {{$fraseIngles}}</h6>
+ 
     </div>
 
  
@@ -84,32 +113,7 @@ else {
 
 
 
-<div class="d-flex justify-content-center" >
 
-        <div class="card p-2 bg-dark text-center" style="width: 18rem;"  id="microfono">
-        <div class="p-2">
-          
-        <h3 class="text-white">Segundos </h3> 
-        <div class="btn-group" role="group" aria-label="Basic example">
-  <button  onclick="sonido8segundos()" type="button" class="btn btn-primary">8</button>
-  <button  onclick="sonido15segundos()" type="button" class="btn btn-primary">15</button>
-  <button onclick="sonido30segundos()" type="button" class="btn btn-primary">30</button>
-  <input  type="number" min="2"  id="idSonido" value="8" class="form-control" >
-</div>
-<br>
-
-
-                
-               
-              
-        </div>
-        
-        <a href="#" onclick="sonido()"> <i class="p-4 text-white fa-2x fa fa-microphone" aria-hidden="true"></i></a>
-
-
-      </div>
-
-</div>
 
 
 <div id="divAprendida"   style="display:none">
@@ -151,7 +155,7 @@ else {
         var index = 0;
         var contador=0;
         var contadorSegundoPalabra=0;
-        var text = "{{$palabraIngles}}";
+        var text = "{{$fraseIngles}}";
         var tiempoDeEspera = 80;
 
  
@@ -159,40 +163,46 @@ else {
   
   
 
-  function sonido8segundos(){
+  function unMinuto(){
 
 
-tiempoSegundos= 8*1000;
+tiempoSegundos= 60*1000;
 
 if(tiempoSegundos>=4000){
   //alert(tiempoSegundos);
-  pronunciarIngles('{{$palabraIngles}}','{{$velocidad}}');
- pronunciarEspayol('{{$palabraEspayol}}');;
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+ pronunciarEspayol('{{$fraseEspayol}}');;
 //alert(tiempoSegundos);  
 document.getElementById("microfono").style.display = "none";
 document.getElementById("divAprendida").style.display = "block";
 
-setTimeout(function(){sonido(); }, tiempoSegundos);
+setTimeout(function(){unMinuto(); }, tiempoSegundos);
 }
 else{
   alert("El tiempo debe ser mayor a 4 segundos");
 }
 }
 
-function sonido15segundos(){
+function dosMinutos(){
 
 
-tiempoSegundos= 15*1000;
+tiempoSegundos= 120*1000;
 
 if(tiempoSegundos>=4000){
   //alert(tiempoSegundos);
-  pronunciarIngles('{{$palabraIngles}}','{{$velocidad}}');
- pronunciarEspayol('{{$palabraEspayol}}');;
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+ pronunciarEspayol('{{$fraseEspayol}}');;
 //alert(tiempoSegundos);  
 document.getElementById("microfono").style.display = "none";
 document.getElementById("divAprendida").style.display = "block";
 
-setTimeout(function(){sonido(); }, tiempoSegundos);
+setTimeout(function(){dosMinutos(); }, tiempoSegundos);
 }
 else{
   alert("El tiempo debe ser mayor a 4 segundos");
@@ -206,13 +216,16 @@ tiempoSegundos= 30*1000;
 
 if(tiempoSegundos>=4000){
   //alert(tiempoSegundos);
-  pronunciarIngles('{{$palabraIngles}}','{{$velocidad}}');
- pronunciarEspayol('{{$palabraEspayol}}');;
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+  pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+ pronunciarEspayol('{{$fraseEspayol}}');;
 //alert(tiempoSegundos);  
 document.getElementById("microfono").style.display = "none";
 document.getElementById("divAprendida").style.display = "block";
 
-setTimeout(function(){sonido(); }, tiempoSegundos);
+setTimeout(function(){sonido30segundos(); }, tiempoSegundos);
 }
 else{
   alert("El tiempo debe ser mayor a 4 segundos");
@@ -227,8 +240,8 @@ function sonido(){
  
       if(tiempoSegundos>=4000){
         //alert(tiempoSegundos);
-        pronunciarIngles('{{$palabraIngles}}','{{$velocidad}}');
-       pronunciarEspayol('{{$palabraEspayol}}');;
+        pronunciarIngles('{{$fraseIngles}}','{{$velocidad}}');
+       pronunciarEspayol('{{$fraseEspayol}}');;
   //alert(tiempoSegundos);  
     document.getElementById("microfono").style.display = "none";
     document.getElementById("divAprendida").style.display = "block";
@@ -247,7 +260,7 @@ function cambiarPalabraTitulo(){
 
     document.getElementById("titulo").innerHTML = `
     <span class="" style="color:{{$color}}">
-      {{$palabraEspayol}}    
+      {{$fraseEspayol}}    
     </span>
    `;
    contadorSegundoPalabra++;   
@@ -258,7 +271,7 @@ function cambiarPalabraTitulo(){
   
     document.getElementById("titulo").innerHTML = `
     <span class="" style="color:#FF1493">
-      {{$palabraIngles}}   
+      {{$fraseIngles}}   
     </span>
    `;
    contadorSegundoPalabra=0;
